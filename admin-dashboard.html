@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Stackly</title>
+    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="dashboard.css?v=3">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        /* Admin specific tweaks */
+        .dash-sidebar { background: var(--dark); border-right: none; }
+        .dash-logo { color: #fff; }
+        .dash-nav-item { color: rgba(255,255,255,0.6); }
+        .dash-nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+        .dash-nav-item.active { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(14,165,233,0.2); }
+        .dash-logout { color: #ef4444; }
+        .dash-logout:hover { background: rgba(239,68,68,0.1); }
+        .dash-sidebar-close { color: #fff; }
+    </style>
+</head>
+<body class="dashboard-page">
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="dashSidebar">
+        <button class="dash-sidebar-close" id="dashSidebarClose" aria-label="Close Sidebar"><i class="ri-close-line"></i></button>
+        <a href="index.html" class="dash-logo">
+            <img src="images/stackly logo.webp" alt="Logo">
+        </a>
+        <nav class="dash-nav">
+            <a href="#" class="dash-nav-item active" data-target="overview">
+                <i class="ri-dashboard-line"></i> Overview
+            </a>
+            <a href="#" class="dash-nav-item" data-target="bookings">
+                <i class="ri-book-read-line"></i> All Bookings
+            </a>
+            <a href="#" class="dash-nav-item" data-target="tours">
+                <i class="ri-route-line"></i> Tour Packages
+            </a>
+            <a href="#" class="dash-nav-item" data-target="customers">
+                <i class="ri-team-line"></i> Customers
+            </a>
+            <a href="#" class="dash-nav-item" data-target="analytics">
+                <i class="ri-bar-chart-box-line"></i> Analytics
+            </a>
+            <a href="#" class="dash-nav-item" data-target="settings">
+                <i class="ri-settings-4-line"></i> Settings
+            </a>
+        </nav>
+        <a href="login.html" class="dash-nav-item dash-logout">
+            <i class="ri-logout-circle-r-line"></i> Log Out
+        </a>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+        <!-- HEADER -->
+        <header class="dash-header">
+            <div class="dh-left">
+                <button class="dh-menu-toggle" id="menuToggle"><i class="ri-menu-2-line"></i></button>
+                <h1 class="dh-title">Agency Overview</h1>
+            </div>
+            <div class="dh-right">
+                <a href="404.html" class="dh-icon-btn" style="text-decoration:none;">
+                    <i class="ri-notification-3-line"></i>
+                    <span class="dh-badge">5</span>
+                </a>
+                <div class="dh-user">
+                    <img src="images/c1.webp" alt="Admin">
+                    <div class="dh-user-info">
+                        <strong class="user-display-name">Sarah Jenkins</strong>
+                        <span class="user-display-email">admin@stackly.com</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <div class="dash-content">
+            
+            <!-- OVERVIEW SECTION -->
+            <div id="section-overview" class="dash-pane active">
+                <!-- Stats -->
+                <div class="dash-stats-grid">
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon"><i class="ri-money-dollar-circle-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Total Revenue (MTD)</p>
+                            <h3>$124,500</h3>
+                            <span style="font-size:0.75rem;color:#10b981;font-weight:600;"><i class="ri-arrow-up-line"></i> 12.5% vs last month</span>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(16,185,129,0.1);color:#10b981;"><i class="ri-book-mark-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Active Bookings</p>
+                            <h3>342</h3>
+                            <span style="font-size:0.75rem;color:#10b981;font-weight:600;"><i class="ri-arrow-up-line"></i> 4% vs last month</span>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(245,158,11,0.1);color:#f59e0b;"><i class="ri-team-line"></i></div>
+                        <div class="dsc-info">
+                            <p>New Customers</p>
+                            <h3>1,204</h3>
+                            <span style="font-size:0.75rem;color:#10b981;font-weight:600;"><i class="ri-arrow-up-line"></i> 18% vs last month</span>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(244,63,94,0.1);color:#f43f5e;"><i class="ri-route-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Active Tour Packages</p>
+                            <h3>84</h3>
+                            <span style="font-size:0.75rem;color:var(--mid);font-weight:600;">Updated today</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Bookings -->
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>Recent Bookings (Live)</h3>
+                        <div style="display:flex;gap:10px;">
+                            <button class="btn btn-outline" onclick="window.location.href='404.html'" style="padding: 8px 16px; font-size: 0.85rem;">View All</button>
+                        </div>
+                    </div>
+                    <div class="dash-table-wrap">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Customer</th>
+                                    <th>Tour Package</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#WL-9483</strong></td>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:10px;">
+                                            <img src="images/c1.webp" alt="Customer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                                            <span>Michael Chen</span>
+                                        </div>
+                                    </td>
+                                    <td>Galapagos Islands Expedition</td>
+                                    <td>$8,900</td>
+                                    <td><span class="dt-status status-pending">Pending Payment</span></td>
+                                    <td><button class="dt-action"><i class="ri-more-2-fill"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#WL-9482</strong></td>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:10px;">
+                                            <img src="images/c2.webp" alt="Customer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                                            <span>John Doe</span>
+                                        </div>
+                                    </td>
+                                    <td>Maldives Luxury Escape</td>
+                                    <td>$13,600</td>
+                                    <td><span class="dt-status status-confirmed">Confirmed</span></td>
+                                    <td><button class="dt-action"><i class="ri-more-2-fill"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALL BOOKINGS SECTION -->
+            <div id="section-bookings" class="dash-pane">
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>All Agency Bookings</h3>
+                        <button class="btn btn-primary" onclick="window.location.href='404.html'" style="padding: 8px 16px; font-size: 0.85rem;"><i class="ri-add-line"></i> Add Booking</button>
+                    </div>
+                    <div class="dash-table-wrap">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Customer</th>
+                                    <th>Tour Package</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#WL-9483</strong></td>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:10px;">
+                                            <img src="images/c1.webp" alt="Customer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                                            <span>Michael Chen</span>
+                                        </div>
+                                    </td>
+                                    <td>Galapagos Islands Expedition</td>
+                                    <td>$8,900</td>
+                                    <td><span class="dt-status status-pending">Pending Payment</span></td>
+                                    <td><button class="dt-action" onclick="window.location.href='404.html'" style="padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:0.8rem;border:none;">Process</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#WL-9482</strong></td>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:10px;">
+                                            <img src="images/c2.webp" alt="Customer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                                            <span>John Doe</span>
+                                        </div>
+                                    </td>
+                                    <td>Maldives Luxury Escape</td>
+                                    <td>$13,600</td>
+                                    <td><span class="dt-status status-confirmed">Confirmed</span></td>
+                                    <td><button class="dt-action" onclick="window.location.href='404.html'" style="padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:0.8rem;border:none;">Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#WL-9481</strong></td>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:10px;">
+                                            <img src="images/c3.webp" alt="Customer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                                            <span>Emily Davis</span>
+                                        </div>
+                                    </td>
+                                    <td>Santorini Romance</td>
+                                    <td>$4,200</td>
+                                    <td><span class="dt-status status-cancelled">Cancelled</span></td>
+                                    <td><button class="dt-action" onclick="window.location.href='404.html'" style="padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:0.8rem;border:none;">Restore</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOUR PACKAGES SECTION -->
+            <div id="section-tours" class="dash-pane">
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>Active Tour Packages</h3>
+                        <button class="btn btn-primary" onclick="window.location.href='404.html'" style="padding: 8px 16px; font-size: 0.85rem;"><i class="ri-add-line"></i> Add Package</button>
+                    </div>
+                    <div class="dash-grid-cards">
+                        <div style="background:#fff;border-radius:16px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.02);">
+                            <img src="images/Maldives Luxury Escape.webp" alt="Maldives" style="width:100%;height:160px;object-fit:cover;">
+                            <div style="padding:20px;">
+                                <h4 style="font-family:var(--font-heading);font-weight:700;font-size:1.05rem;margin-bottom:6px;">Maldives Luxury Escape</h4>
+                                <p style="font-size:0.85rem;color:var(--mid);margin-bottom:12px;">8 Days • Active</p>
+                                <div style="display:flex;justify-content:between;align-items:center;">
+                                    <span style="font-weight:800;color:var(--primary);">$6,800</span>
+                                    <button class="btn btn-outline" onclick="window.location.href='404.html'" style="padding:6px 12px;font-size:0.8rem;border-radius:6px;">Edit Package</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background:#fff;border-radius:16px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.02);">
+                            <img src="images/Japan Cherry Blossom.webp" alt="Japan" style="width:100%;height:160px;object-fit:cover;">
+                            <div style="padding:20px;">
+                                <h4 style="font-family:var(--font-heading);font-weight:700;font-size:1.05rem;margin-bottom:6px;">Japan Cherry Blossom</h4>
+                                <p style="font-size:0.85rem;color:var(--mid);margin-bottom:12px;">12 Days • Active</p>
+                                <div style="display:flex;justify-content:between;align-items:center;">
+                                    <span style="font-weight:800;color:var(--primary);">$3,700</span>
+                                    <button class="btn btn-outline" onclick="window.location.href='404.html'" style="padding:6px 12px;font-size:0.8rem;border-radius:6px;">Edit Package</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CUSTOMERS SECTION -->
+            <div id="section-customers" class="dash-pane">
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>Registered Customers</h3>
+                    </div>
+                    <div class="dash-table-wrap">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Email</th>
+                                    <th>Bookings</th>
+                                    <th>Spent</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:10px;">
+                                            <img src="images/c1.webp" alt="Customer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                                            <strong>Michael Chen</strong>
+                                        </div>
+                                    </td>
+                                    <td>michael.c@example.com</td>
+                                    <td>3 Bookings</td>
+                                    <td>$24,300</td>
+                                    <td><span style="color:#10b981;font-size:0.75rem;font-weight:700;background:#d1fae5;padding:4px 8px;border-radius:100px;">Active</span></td>
+                                    <td><button class="dt-action" onclick="window.location.href='404.html'"><i class="ri-mail-send-line"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:10px;">
+                                            <img src="images/c2.webp" alt="Customer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                                            <strong>John Doe</strong>
+                                        </div>
+                                    </td>
+                                    <td>john.doe@example.com</td>
+                                    <td>5 Bookings</td>
+                                    <td>$42,100</td>
+                                    <td><span style="color:#10b981;font-size:0.75rem;font-weight:700;background:#d1fae5;padding:4px 8px;border-radius:100px;">Active</span></td>
+                                    <td><button class="dt-action" onclick="window.location.href='404.html'"><i class="ri-mail-send-line"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ANALYTICS SECTION -->
+            <div id="section-analytics" class="dash-pane">
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>Analytics & Performance</h3>
+                    </div>
+                    <div style="padding:40px;background:#fff;border-radius:16px;border:1px solid #f1f5f9;text-align:center;">
+                        <i class="ri-bar-chart-2-line" style="font-size:3rem;color:var(--primary);margin-bottom:12px;display:block;"></i>
+                        <h4 style="font-family:var(--font-heading);font-size:1.2rem;font-weight:700;margin-bottom:8px;">Booking Analytics Overview</h4>
+                        <p style="font-size:0.9rem;color:var(--mid);max-width:500px;margin:0 auto 20px;">Monthly revenue is up 12.5%. Most popular package this quarter is Maldives Luxury Escape followed by Japan Cherry Blossom.</p>
+                        <button class="btn btn-outline" onclick="window.location.href='404.html'" style="padding:10px 24px;font-size:0.88rem;border-radius:8px;">Export Full Report</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETTINGS SECTION -->
+            <div id="section-settings" class="dash-pane">
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>Agency Settings</h3>
+                    </div>
+                    <form id="adminSettingsForm" style="max-width:500px;background:#fff;padding:24px;border-radius:16px;border:1px solid #f1f5f9;">
+                        <div style="margin-bottom:20px;">
+                            <label style="display:block;margin-bottom:6px;font-weight:600;">Agency Name *</label>
+                            <input type="text" id="adminAgencyName" placeholder="Stackly Travel Group" required minlength="2" style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;">
+                        </div>
+                        <div style="margin-bottom:20px;">
+                            <label style="display:block;margin-bottom:6px;font-weight:600;">Admin Full Name *</label>
+                            <input type="text" id="adminName" placeholder="Sarah Jenkins" required minlength="2" pattern="[A-Za-z\s]+" title="Name must contain letters only" style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;">
+                        </div>
+                        <div style="margin-bottom:20px;">
+                            <label style="display:block;margin-bottom:6px;font-weight:600;">Contact Email *</label>
+                            <input type="email" id="adminEmail" placeholder="admin@stackly.com" required style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;">
+                        </div>
+                        <button type="button" onclick="window.location.href='404.html'" class="btn btn-primary" id="saveAdminBtn" style="padding:12px 28px;font-family:var(--font-heading);font-weight:700;border:none;border-radius:8px;">Save Settings</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load and reflect stored credentials
+            const loggedInEmail = localStorage.getItem('loggedInEmail') || 'admin@stackly.com';
+            const loggedInName = localStorage.getItem('loggedInName') || 'Sarah Jenkins';
+            const loggedInAgency = localStorage.getItem('loggedInAgency') || 'Stackly Travel Group';
+
+            const updateDOMProfile = (name, email) => {
+                document.querySelectorAll('.user-display-name').forEach(el => {
+                    el.textContent = name;
+                });
+                document.querySelectorAll('.user-display-email').forEach(el => {
+                    el.textContent = email;
+                });
+            };
+
+            updateDOMProfile(loggedInName, loggedInEmail);
+
+            const agencyNameInput = document.getElementById('adminAgencyName');
+            const adminNameInput = document.getElementById('adminName');
+            const adminEmailInput = document.getElementById('adminEmail');
+
+            if (agencyNameInput) agencyNameInput.value = loggedInAgency;
+            if (adminNameInput) adminNameInput.value = loggedInName;
+            if (adminEmailInput) adminEmailInput.value = loggedInEmail;
+
+            // Listen to storage events to sync across tabs/dashboards
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'loggedInEmail' || e.key === 'loggedInName' || e.key === 'loggedInAgency') {
+                    const freshEmail = localStorage.getItem('loggedInEmail') || 'admin@stackly.com';
+                    const freshName = localStorage.getItem('loggedInName') || 'Sarah Jenkins';
+                    const freshAgency = localStorage.getItem('loggedInAgency') || 'Stackly Travel Group';
+                    
+                    updateDOMProfile(freshName, freshEmail);
+                    if (agencyNameInput) agencyNameInput.value = freshAgency;
+                    if (adminNameInput) adminNameInput.value = freshName;
+                    if (adminEmailInput) adminEmailInput.value = freshEmail;
+                }
+            });
+
+            const navItems = document.querySelectorAll('.dash-nav-item[data-target]');
+            const panes = document.querySelectorAll('.dash-pane');
+            const showAllBtn = document.querySelector('.show-all-bookings');
+
+            const switchPane = (targetPane) => {
+                panes.forEach(pane => pane.classList.remove('active'));
+                navItems.forEach(item => item.classList.remove('active'));
+
+                const targetEl = document.getElementById(`section-${targetPane}`);
+                const activeItem = document.querySelector(`.dash-nav-item[data-target="${targetPane}"]`);
+
+                if (targetEl) targetEl.classList.add('active');
+                if (activeItem) activeItem.classList.add('active');
+            };
+
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetPane = item.getAttribute('data-target');
+                    switchPane(targetPane);
+
+                    sidebar.classList.remove('open');
+                    overlay.style.display = 'none';
+                });
+            });
+
+            if (showAllBtn) {
+                showAllBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    switchPane('bookings');
+                });
+            }
+
+            // Responsiveness
+            const toggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('dashSidebar');
+            const sidebarClose = document.getElementById('dashSidebarClose');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            if (toggle && sidebar && overlay) {
+                toggle.addEventListener('click', () => {
+                    sidebar.classList.add('open');
+                    overlay.style.display = 'block';
+                });
+
+                const closeSidebar = () => {
+                    sidebar.classList.remove('open');
+                    overlay.style.display = 'none';
+                };
+
+                overlay.addEventListener('click', closeSidebar);
+                if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+            }
+
+            // Settings Validation
+            const adminForm = document.getElementById('adminSettingsForm');
+            if (adminForm) {
+                const agencyNameInput = document.getElementById('adminAgencyName');
+                const adminNameInput = document.getElementById('adminName');
+                const adminEmailInput = document.getElementById('adminEmail');
+
+                const validateAdminField = (input) => {
+                    let isValid = true;
+                    const val = input.value.trim();
+
+                    if (input.required && !val) {
+                        isValid = false;
+                    } else if (input.id === 'adminName' && val) {
+                        const nameRegex = /^[A-Za-z\s]{2,}$/;
+                        isValid = nameRegex.test(val);
+                    } else if (input.type === 'email' && val) {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        isValid = emailRegex.test(val);
+                    }
+
+                    input.style.borderColor = isValid ? '#10b981' : '#ef4444';
+                    return isValid;
+                };
+
+                [agencyNameInput, adminNameInput, adminEmailInput].forEach(input => {
+                    input.addEventListener('blur', () => validateAdminField(input));
+                    input.addEventListener('input', () => validateAdminField(input));
+                });
+
+                adminForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    let isFormValid = true;
+
+                    [agencyNameInput, adminNameInput, adminEmailInput].forEach(input => {
+                        if (!validateAdminField(input)) isFormValid = false;
+                    });
+
+                    if (isFormValid) {
+                        const saveBtn = document.getElementById('saveAdminBtn');
+                        saveBtn.innerHTML = '<i class="ri-loader-4-line" style="animation:spin 1s linear infinite;display:inline-block;"></i> Saving...';
+                        saveBtn.disabled = true;
+
+                        setTimeout(() => {
+                            saveBtn.innerHTML = '<i class="ri-check-line"></i> Saved!';
+                            saveBtn.style.background = '#10b981';
+                            saveBtn.disabled = false;
+
+                            // Save updated values to localStorage
+                            localStorage.setItem('loggedInName', adminNameInput.value.trim());
+                            localStorage.setItem('loggedInEmail', adminEmailInput.value.trim());
+                            localStorage.setItem('loggedInAgency', agencyNameInput.value.trim());
+
+                            // Update user display names and emails site-wide
+                            updateDOMProfile(adminNameInput.value.trim(), adminEmailInput.value.trim());
+
+                            setTimeout(() => {
+                                saveBtn.innerHTML = 'Save Settings';
+                                saveBtn.style.background = '';
+                            }, 2000);
+                        }, 1200);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard | Stackly</title>
+    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="dashboard.css?v=3">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="dashSidebar">
+        <button class="dash-sidebar-close" id="dashSidebarClose" aria-label="Close Sidebar"><i class="ri-close-line"></i></button>
+        <a href="index.html" class="dash-logo">
+            <img src="images/stackly logo.webp" alt="Logo">
+        </a>
+        <nav class="dash-nav">
+            <a href="#" class="dash-nav-item active" data-target="overview">
+                <i class="ri-dashboard-line"></i> Dashboard
+            </a>
+            <a href="#" class="dash-nav-item" data-target="bookings">
+                <i class="ri-calendar-check-line"></i> My Bookings
+            </a>
+            <a href="#" class="dash-nav-item" data-target="wishlist">
+                <i class="ri-heart-line"></i> Wishlist
+            </a>
+            <a href="#" class="dash-nav-item" data-target="reviews">
+                <i class="ri-star-line"></i> My Reviews
+            </a>
+            <a href="#" class="dash-nav-item" data-target="settings">
+                <i class="ri-settings-4-line"></i> Settings
+            </a>
+        </nav>
+        <a href="login.html" class="dash-nav-item dash-logout">
+            <i class="ri-logout-circle-r-line"></i> Log Out
+        </a>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MAIN -->
+    <main class="dash-main">
+        <!-- HEADER -->
+        <header class="dash-header">
+            <div class="dh-left">
+                <button class="dh-menu-toggle" id="menuToggle"><i class="ri-menu-2-line"></i></button>
+                <h1 class="dh-title">Welcome back, <span class="user-display-name">John</span> 👋</h1>
+            </div>
+            <div class="dh-right">
+                <a href="404.html" class="dh-icon-btn" style="text-decoration:none;">
+                    <i class="ri-notification-3-line"></i>
+                    <span class="dh-badge">2</span>
+                </a>
+                <div class="dh-user">
+                    <img src="images/p1.webp" alt="John Doe">
+                    <div class="dh-user-info">
+                        <strong class="user-display-name">John Doe</strong>
+                        <span class="user-display-email">john.doe@example.com</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <div class="dash-content">
+            
+            <!-- OVERVIEW SECTION -->
+            <div id="section-overview" class="dash-pane active">
+                <!-- Banner -->
+                <div class="dash-banner">
+                    <div class="db-info">
+                        <h2>7 Days until Maldives! 🌴</h2>
+                        <p>Your luxury escape is just around the corner. Review your itinerary below.</p>
+                    </div>
+                    <a href="404.html" class="db-action">View Itinerary</a>
+                </div>
+
+                <!-- Stats -->
+                <div class="dash-stats-grid">
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon"><i class="ri-flight-takeoff-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Upcoming Trips</p>
+                            <h3>1</h3>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(16,185,129,0.1);color:#10b981;"><i class="ri-map-pin-time-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Past Adventures</p>
+                            <h3>4</h3>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(245,158,11,0.1);color:#f59e0b;"><i class="ri-earth-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Countries Visited</p>
+                            <h3>12</h3>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(244,63,94,0.1);color:#f43f5e;"><i class="ri-heart-pulse-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Saved to Wishlist</p>
+                            <h3>8</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Bookings -->
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>Recent Bookings</h3>
+                        <a href="404.html" class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;">View All</a>
+                    </div>
+                    <div class="dash-table-wrap">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Tour Package</th>
+                                    <th>Date</th>
+                                    <th>Guests</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="dt-tour">
+                                            <img src="images/Maldives Luxury Escape.webp" alt="Maldives">
+                                            <div>
+                                                <strong>Maldives Luxury Escape</strong>
+                                                <span>Booking ID: #WL-9482</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Oct 15 - Oct 22, 2026</td>
+                                    <td>2 Adults</td>
+                                    <td><span class="dt-status status-confirmed">Confirmed</span></td>
+                                    <td><button class="dt-action"><i class="ri-more-2-fill"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="dt-tour">
+                                            <img src="images/Japan Cherry Blossom.webp" alt="Japan">
+                                            <div>
+                                                <strong>Japan Cherry Blossom</strong>
+                                                <span>Booking ID: #WL-8321</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Mar 10 - Mar 22, 2026</td>
+                                    <td>2 Adults</td>
+                                    <td><span class="dt-status status-completed">Completed</span></td>
+                                    <td><button class="dt-action"><i class="ri-more-2-fill"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MY BOOKINGS SECTION -->
+            <div id="section-bookings" class="dash-pane">
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>All My Bookings</h3>
+                    </div>
+                    <div class="dash-table-wrap">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Tour Package</th>
+                                    <th>Date</th>
+                                    <th>Guests</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="dt-tour">
+                                            <img src="images/Maldives Luxury Escape.webp" alt="Maldives">
+                                            <div>
+                                                <strong>Maldives Luxury Escape</strong>
+                                                <span>Booking ID: #WL-9482</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Oct 15 - Oct 22, 2026</td>
+                                    <td>2 Adults</td>
+                                    <td>$13,600</td>
+                                    <td><span class="dt-status status-confirmed">Confirmed</span></td>
+                                    <td><button class="dt-action" onclick="window.location.href='404.html'" style="padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:0.8rem;font-weight:600;border:none;">Manage</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="dt-tour">
+                                            <img src="images/Japan Cherry Blossom.webp" alt="Japan">
+                                            <div>
+                                                <strong>Japan Cherry Blossom</strong>
+                                                <span>Booking ID: #WL-8321</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Mar 10 - Mar 22, 2026</td>
+                                    <td>2 Adults</td>
+                                    <td>$7,400</td>
+                                    <td><span class="dt-status status-completed">Completed</span></td>
+                                    <td><button class="dt-action" onclick="window.location.href='404.html'" style="padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:0.8rem;font-weight:600;border:none;">Feedback</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="dt-tour">
+                                            <img src="images/Santorini Romance.webp" alt="Santorini">
+                                            <div>
+                                                <strong>Santorini Sunset & Villas</strong>
+                                                <span>Booking ID: #WL-7119</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Jun 12 - Jun 18, 2025</td>
+                                    <td>1 Adult</td>
+                                    <td>$4,200</td>
+                                    <td><span class="dt-status status-cancelled">Cancelled</span></td>
+                                    <td><button class="dt-action" onclick="window.location.href='404.html'" style="padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:0.8rem;font-weight:600;border:none;">Rebook</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WISHLIST SECTION -->
+            <div id="section-wishlist" class="dash-pane">
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>My Wishlist</h3>
+                    </div>
+                    <div class="dash-wishlist-grid dash-grid-cards">
+                        <!-- Wishlist Card 1 -->
+                        <div class="dash-wishlist-card" style="background:#fff;border-radius:16px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.02);position:relative;">
+                            <img src="images/Bali Romance Retreat.webp" alt="Bali" style="width:100%;height:180px;object-fit:cover;">
+                            <button onclick="window.location.href='404.html'" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:#fff;border:none;color:#ef4444;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;"><i class="ri-heart-fill"></i></button>
+                            <div style="padding:20px;">
+                                <h4 style="font-family:var(--font-heading);font-size:1.1rem;font-weight:700;margin-bottom:8px;">Bali Spiritual Retreat</h4>
+                                <p style="font-size:0.85rem;color:var(--mid);margin-bottom:16px;"><i class="ri-map-pin-line"></i> Indonesia</p>
+                                <div style="display:flex;justify-content:between;align-items:center;">
+                                    <span style="font-family:var(--font-heading);font-weight:800;color:var(--primary);">$1,200 <span style="font-weight:400;color:var(--mid);font-size:0.8rem;">/ person</span></span>
+                                    <a href="404.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.85rem;border-radius:8px;text-decoration:none;">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Wishlist Card 2 -->
+                        <div class="dash-wishlist-card" style="background:#fff;border-radius:16px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.02);position:relative;">
+                            <img src="images/Paris.webp" alt="Paris" style="width:100%;height:180px;object-fit:cover;">
+                            <button onclick="window.location.href='404.html'" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:#fff;border:none;color:#ef4444;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;"><i class="ri-heart-fill"></i></button>
+                            <div style="padding:20px;">
+                                <h4 style="font-family:var(--font-heading);font-size:1.1rem;font-weight:700;margin-bottom:8px;">Parisian Romance Holiday</h4>
+                                <p style="font-size:0.85rem;color:var(--mid);margin-bottom:16px;"><i class="ri-map-pin-line"></i> France</p>
+                                <div style="display:flex;justify-content:between;align-items:center;">
+                                    <span style="font-family:var(--font-heading);font-weight:800;color:var(--primary);">$2,500 <span style="font-weight:400;color:var(--mid);font-size:0.8rem;">/ person</span></span>
+                                    <a href="404.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.85rem;border-radius:8px;text-decoration:none;">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MY REVIEWS SECTION -->
+            <div id="section-reviews" class="dash-pane">
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>My Reviews</h3>
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:20px;">
+                        <div style="padding:20px;border:1px solid #f1f5f9;border-radius:12px;background:#fff;display:flex;gap:20px;align-items:start;">
+                            <img src="images/Maldives Luxury Escape.webp" alt="Maldives" style="width:80px;height:80px;border-radius:12px;object-fit:cover;">
+                            <div style="flex:1;">
+                                <h4 style="font-family:var(--font-heading);font-weight:700;font-size:1rem;margin-bottom:6px;">Maldives Luxury Escape</h4>
+                                <div style="color:#f59e0b;font-size:0.95rem;margin-bottom:8px;">
+                                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                                    <span style="color:var(--mid);font-size:0.8rem;margin-left:8px;">Reviewed on Oct 24, 2026</span>
+                                </div>
+                                <p style="font-size:0.88rem;color:var(--dark);line-height:1.5;">Absolutely breathtaking! The water villa was magnificent, and the service was beyond words. Highly recommended for couples looking for luxury.</p>
+                            </div>
+                        </div>
+                        <div style="padding:20px;border:1px solid #f1f5f9;border-radius:12px;background:#fff;display:flex;gap:20px;align-items:start;">
+                            <img src="images/Japan Cherry Blossom.webp" alt="Japan" style="width:80px;height:80px;border-radius:12px;object-fit:cover;">
+                            <div style="flex:1;">
+                                <h4 style="font-family:var(--font-heading);font-weight:700;font-size:1rem;margin-bottom:6px;">Japan Cherry Blossom</h4>
+                                <div style="color:#f59e0b;font-size:0.95rem;margin-bottom:8px;">
+                                    <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-line"></i>
+                                    <span style="color:var(--mid);font-size:0.8rem;margin-left:8px;">Reviewed on Apr 02, 2026</span>
+                                </div>
+                                <p style="font-size:0.88rem;color:var(--dark);line-height:1.5;">Cherry blossoms were gorgeous. The itinerary was a bit packed, but our local guide did a fantastic job showing us Kyoto and Tokyo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETTINGS SECTION -->
+            <div id="section-settings" class="dash-pane">
+                <div class="dash-section">
+                    <div class="dash-section-header">
+                        <h3>Profile Settings</h3>
+                    </div>
+                    <form class="auth-form" id="userProfileForm" novalidate style="max-width: 600px; padding: 0;">
+                        <div class="af-row dash-grid-split">
+                            <div class="af-field">
+                                <label for="profileName">Full Name *</label>
+                                <div class="af-input-wrap" style="position:relative;">
+                                    <i class="ri-user-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
+                                    <input type="text" id="profileName" placeholder="John Doe" required minlength="2" pattern="[A-Za-z\s]+" title="Name must be at least 2 characters (letters only)" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                                </div>
+                                <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
+                            </div>
+                            <div class="af-field">
+                                <label for="profileMobile">Mobile Number *</label>
+                                <div class="af-input-wrap" style="position:relative;">
+                                    <i class="ri-phone-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
+                                    <input type="tel" id="profileMobile" placeholder="10-digit mobile number" required maxlength="10" pattern="[0-9]{10}" title="Mobile number must be exactly 10 digits" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                                </div>
+                                <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
+                            </div>
+                        </div>
+
+                        <div class="af-field" style="margin-bottom:20px;">
+                            <label for="profileEmail">Email Address *</label>
+                            <div class="af-input-wrap" style="position:relative;">
+                                <i class="ri-mail-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
+                                <input type="email" id="profileEmail" placeholder="john@example.com" required title="Please enter a valid email address" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                            </div>
+                            <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
+                        </div>
+
+                        <div class="af-field" style="margin-bottom:20px;">
+                            <label for="profilePwd">New Password</label>
+                            <div class="af-input-wrap" style="position:relative;">
+                                <i class="ri-lock-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
+                                <input type="password" id="profilePwd" placeholder="Leave blank to keep current" minlength="8" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                            </div>
+                            <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
+                        </div>
+
+                        <button type="button" onclick="window.location.href='404.html'" class="btn btn-primary" id="saveProfileBtn" style="padding:12px 28px;font-family:var(--font-heading);font-weight:700;border-radius:8px;border:none;">Save Profile</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // Tab switching and responsiveness
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load and reflect stored credentials
+            const loggedInEmail = localStorage.getItem('loggedInEmail') || 'john.doe@example.com';
+            const loggedInName = localStorage.getItem('loggedInName') || 'John Doe';
+            const loggedInMobile = localStorage.getItem('loggedInMobile') || '9876543210';
+
+            const updateDOMProfile = (name, email) => {
+                document.querySelectorAll('.user-display-name').forEach(el => {
+                    if (el.tagName === 'SPAN') {
+                        el.textContent = name.split(' ')[0];
+                    } else {
+                        el.textContent = name;
+                    }
+                });
+                document.querySelectorAll('.user-display-email').forEach(el => {
+                    el.textContent = email;
+                });
+            };
+
+            updateDOMProfile(loggedInName, loggedInEmail);
+
+            const profileNameInput = document.getElementById('profileName');
+            const profileMobileInput = document.getElementById('profileMobile');
+            const profileEmailInput = document.getElementById('profileEmail');
+
+            if (profileNameInput) profileNameInput.value = loggedInName;
+            if (profileMobileInput) profileMobileInput.value = loggedInMobile;
+            if (profileEmailInput) profileEmailInput.value = loggedInEmail;
+
+            // Listen to storage events to sync across tabs/dashboards
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'loggedInEmail' || e.key === 'loggedInName' || e.key === 'loggedInMobile') {
+                    const freshEmail = localStorage.getItem('loggedInEmail') || 'john.doe@example.com';
+                    const freshName = localStorage.getItem('loggedInName') || 'John Doe';
+                    const freshMobile = localStorage.getItem('loggedInMobile') || '9876543210';
+                    
+                    updateDOMProfile(freshName, freshEmail);
+                    if (profileNameInput) profileNameInput.value = freshName;
+                    if (profileMobileInput) profileMobileInput.value = freshMobile;
+                    if (profileEmailInput) profileEmailInput.value = freshEmail;
+                }
+            });
+
+            const navItems = document.querySelectorAll('.dash-nav-item[data-target]');
+            const panes = document.querySelectorAll('.dash-pane');
+            const showAllBtn = document.querySelector('.show-all-bookings');
+
+            // Switch to a pane
+            const switchPane = (targetPane) => {
+                panes.forEach(pane => pane.classList.remove('active'));
+                navItems.forEach(item => item.classList.remove('active'));
+
+                const targetEl = document.getElementById(`section-${targetPane}`);
+                const activeItem = document.querySelector(`.dash-nav-item[data-target="${targetPane}"]`);
+
+                if (targetEl) targetEl.classList.add('active');
+                if (activeItem) activeItem.classList.add('active');
+            };
+
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetPane = item.getAttribute('data-target');
+                    switchPane(targetPane);
+
+                    // Close sidebar on mobile
+                    sidebar.classList.remove('open');
+                    overlay.style.display = 'none';
+                });
+            });
+
+            if (showAllBtn) {
+                showAllBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    switchPane('bookings');
+                });
+            }
+
+            // Simple sidebar toggle
+            const toggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('dashSidebar');
+            const sidebarClose = document.getElementById('dashSidebarClose');
+            const overlay = document.getElementById('sidebarOverlay');
+
+            if (toggle && sidebar && overlay) {
+                toggle.addEventListener('click', () => {
+                    sidebar.classList.add('open');
+                    overlay.style.display = 'block';
+                });
+
+                const closeSidebar = () => {
+                    sidebar.classList.remove('open');
+                    overlay.style.display = 'none';
+                };
+
+                overlay.addEventListener('click', closeSidebar);
+                if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+            }
+
+            // Profile Form Handling
+            const profileForm = document.getElementById('userProfileForm');
+            if (profileForm) {
+                // Initialize input constraints
+                const profileNameInput = document.getElementById('profileName');
+                const profileMobileInput = document.getElementById('profileMobile');
+                const profileEmailInput = document.getElementById('profileEmail');
+
+                const validateProfileField = (input) => {
+                    const wrap = input.closest('.af-input-wrap');
+                    if (!wrap) return true;
+                    const errorMsg = wrap.nextElementSibling;
+                    let isValid = true;
+                    let message = '';
+                    const val = input.value.trim();
+
+                    if (input.required && !val) {
+                        isValid = false;
+                        message = 'This field is required';
+                    } else if (input.id === 'profileName' && val) {
+                        const nameRegex = /^[A-Za-z\s]{2,}$/;
+                        if (!nameRegex.test(val)) {
+                            isValid = false;
+                            message = 'Must be at least 2 letters (letters only)';
+                        }
+                    } else if (input.id === 'profileMobile' && val) {
+                        const phoneRegex = /^[0-9]{10}$/;
+                        if (!phoneRegex.test(val)) {
+                            isValid = false;
+                            message = 'Mobile number must be exactly 10 digits';
+                        }
+                    } else if (input.type === 'email' && val) {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(val)) {
+                            isValid = false;
+                            message = 'Please enter a valid email address';
+                        }
+                    }
+
+                    if (!isValid) {
+                        input.style.borderColor = '#ef4444';
+                        if (errorMsg) {
+                            errorMsg.textContent = message;
+                            errorMsg.style.display = 'block';
+                        }
+                    } else {
+                        input.style.borderColor = '#10b981';
+                        if (errorMsg) {
+                            errorMsg.textContent = '';
+                            errorMsg.style.display = 'none';
+                        }
+                    }
+                    return isValid;
+                };
+
+                [profileNameInput, profileMobileInput, profileEmailInput].forEach(input => {
+                    if (input) {
+                        input.addEventListener('blur', () => validateProfileField(input));
+                        input.addEventListener('input', () => validateProfileField(input));
+                    }
+                });
+
+                profileForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    let isFormValid = true;
+
+                    [profileNameInput, profileMobileInput, profileEmailInput].forEach(input => {
+                        if (input && !validateProfileField(input)) isFormValid = false;
+                    });
+
+                    if (isFormValid) {
+                        const saveBtn = document.getElementById('saveProfileBtn');
+                        saveBtn.innerHTML = '<i class="ri-loader-4-line" style="animation:spin 1s linear infinite;display:inline-block;"></i> Saving...';
+                        saveBtn.disabled = true;
+
+                        setTimeout(() => {
+                            saveBtn.innerHTML = '<i class="ri-check-line"></i> Saved!';
+                            saveBtn.style.background = '#10b981';
+                            saveBtn.disabled = false;
+
+                            // Save updated values to localStorage
+                            localStorage.setItem('loggedInName', profileNameInput.value.trim());
+                            localStorage.setItem('loggedInMobile', profileMobileInput.value.trim());
+                            localStorage.setItem('loggedInEmail', profileEmailInput.value.trim());
+
+                            // Update user display names and emails site-wide
+                            updateDOMProfile(profileNameInput.value.trim(), profileEmailInput.value.trim());
+
+                            setTimeout(() => {
+                                saveBtn.innerHTML = 'Save Profile';
+                                saveBtn.style.background = '';
+                            }, 2000);
+                        }, 1200);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>

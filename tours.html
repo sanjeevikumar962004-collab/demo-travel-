@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours | Stackly — Curated Travel Experiences</title>
+    <meta name="description" content="Browse Stackly curated tour packages — adventure treks, cultural journeys, luxury escapes and honeymoon retreats.">
+    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="tours.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="tours-page">
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- HEADER -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="images/stackly logo.webp" alt="Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html" class="active">Tours</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="signup.html" class="btn btn-outline">Sign Up</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="tours.html" class="active">Tours</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <hr class="menu-divider">
+            <a href="signup.html" class="btn btn-outline" style="text-align:center;justify-content:center;">Sign Up</a>
+            <a href="login.html" class="btn btn-primary" style="text-align:center;justify-content:center;">Login</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="tours-hero" id="tours-hero">
+        <div class="tours-hero-bg">
+            <img src="images/tours hero.webp" alt="Tour Adventures" class="tours-hero-img" loading="eager">
+            <div class="tours-hero-overlay"></div>
+        </div>
+        <div class="tours-hero-content container">
+            <div class="tours-hero-badge">
+                <i class="ri-compass-line"></i> Handcrafted Journeys Worldwide
+            </div>
+            <h1 class="tours-hero-title">
+                Curated
+                <span class="tours-hero-highlight">Tour Packages</span>
+            </h1>
+            <p class="tours-hero-sub">From summit treks to quiet island retreats — expertly designed for memories that last a lifetime.</p>
+        </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="tours-stats-strip">
+        <div class="container">
+            <div class="tours-stats-grid">
+                <div class="tours-stat">
+                    <span class="tours-stat-num" data-count="80">0</span><span class="tours-stat-plus">+</span>
+                    <p>Tour Packages</p>
+                </div>
+                <div class="tours-stat-divider"></div>
+                <div class="tours-stat">
+                    <span class="tours-stat-num" data-count="42">0</span><span class="tours-stat-plus">+</span>
+                    <p>Countries</p>
+                </div>
+                <div class="tours-stat-divider"></div>
+                <div class="tours-stat">
+                    <span class="tours-stat-num" data-count="15">0</span><span class="tours-stat-plus">K+</span>
+                    <p>Tours Completed</p>
+                </div>
+                <div class="tours-stat-divider"></div>
+                <div class="tours-stat">
+                    <span class="tours-stat-num" data-count="98">0</span><span class="tours-stat-plus">%</span>
+                    <p>Satisfaction Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOURS GRID -->
+    <section class="tours-grid-section" id="all-tours">
+        <div class="container">
+            <div class="tours-filter-tabs" id="toursFilterTabs">
+                <button class="tours-tab active" data-filter="all"><i class="ri-grid-fill"></i> All Tours</button>
+                <button class="tours-tab" data-filter="adventure"><i class="ri-mountain-line"></i> Adventure</button>
+                <button class="tours-tab" data-filter="cultural"><i class="ri-ancient-gate-line"></i> Cultural</button>
+                <button class="tours-tab" data-filter="luxury"><i class="ri-vip-crown-line"></i> Luxury</button>
+                <button class="tours-tab" data-filter="honeymoon"><i class="ri-heart-line"></i> Honeymoon</button>
+                <button class="tours-tab" data-filter="family"><i class="ri-parent-line"></i> Family</button>
+            </div>
+            <div class="tours-cards-grid" id="toursCardsGrid">
+
+                <div class="tour-card reveal-card" data-category="adventure">
+                    <div class="tc-img-wrap">
+                        <img src="images/Himalayan Trek.webp" alt="Himalayan Trek" loading="lazy">
+                        <div class="tc-badge">Bestseller</div>
+                        <div class="tc-cat-tag">Adventure</div>
+                        <button class="tc-wishlist" aria-label="Add to wishlist"><i class="ri-heart-line"></i></button>
+                    </div>
+                    <div class="tc-body">
+                        <div class="tc-top">
+                            <div><h3>Himalayan Trek</h3><p class="tc-location"><i class="ri-map-pin-2-line"></i> Nepal</p></div>
+                            <div class="tc-rating"><i class="ri-star-fill"></i> 4.9</div>
+                        </div>
+                        <p class="tc-desc">Conquer the world's rooftop on this legendary 14-day trek to Everest Base Camp with expert Sherpa guides.</p>
+                        <div class="tc-meta-row">
+                            <span><i class="ri-time-line"></i> 14 Days</span>
+                            <span><i class="ri-user-line"></i> 8-12 pax</span>
+                            <span><i class="ri-sun-line"></i> Oct-Nov</span>
+                            <span><i class="ri-bar-chart-2-line"></i> Challenging</span>
+                        </div>
+                        <div class="tc-footer">
+                            <div class="tc-price">From <strong>$3,200</strong><span>/person</span></div>
+                            <a href="404.html" class="btn btn-primary">Book Tour</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal-card" data-category="cultural">
+                    <div class="tc-img-wrap">
+                        <img src="images/Golden Triangle India.webp" alt="Golden Triangle India" loading="lazy">
+                        <div class="tc-badge">Top Rated</div>
+                        <div class="tc-cat-tag">Cultural</div>
+                        <button class="tc-wishlist" aria-label="Add to wishlist"><i class="ri-heart-line"></i></button>
+                    </div>
+                    <div class="tc-body">
+                        <div class="tc-top">
+                            <div><h3>Golden Triangle India</h3><p class="tc-location"><i class="ri-map-pin-2-line"></i> India</p></div>
+                            <div class="tc-rating"><i class="ri-star-fill"></i> 4.8</div>
+                        </div>
+                        <p class="tc-desc">Discover the grandeur of Delhi, Agra and Jaipur — palaces, markets and the iconic Taj Mahal.</p>
+                        <div class="tc-meta-row">
+                            <span><i class="ri-time-line"></i> 10 Days</span>
+                            <span><i class="ri-user-line"></i> 6-16 pax</span>
+                            <span><i class="ri-sun-line"></i> Nov-Mar</span>
+                            <span><i class="ri-bar-chart-2-line"></i> Easy</span>
+                        </div>
+                        <div class="tc-footer">
+                            <div class="tc-price">From <strong>$1,950</strong><span>/person</span></div>
+                            <a href="404.html" class="btn btn-primary">Book Tour</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal-card" data-category="luxury">
+                    <div class="tc-img-wrap">
+                        <img src="images/Maldives Luxury Escape.webp" alt="Maldives Luxury Escape" loading="lazy">
+                        <div class="tc-badge tc-badge-premium">Premium</div>
+                        <div class="tc-cat-tag">Luxury</div>
+                        <button class="tc-wishlist" aria-label="Add to wishlist"><i class="ri-heart-line"></i></button>
+                    </div>
+                    <div class="tc-body">
+                        <div class="tc-top">
+                            <div><h3>Maldives Luxury Escape</h3><p class="tc-location"><i class="ri-map-pin-2-line"></i> Maldives</p></div>
+                            <div class="tc-rating"><i class="ri-star-fill"></i> 5.0</div>
+                        </div>
+                        <p class="tc-desc">Private overwater villa, personal butler, sunset champagne cruises and world-class spa treatments.</p>
+                        <div class="tc-meta-row">
+                            <span><i class="ri-time-line"></i> 7 Days</span>
+                            <span><i class="ri-user-line"></i> 2-4 pax</span>
+                            <span><i class="ri-sun-line"></i> Nov-Apr</span>
+                            <span><i class="ri-bar-chart-2-line"></i> Relaxed</span>
+                        </div>
+                        <div class="tc-footer">
+                            <div class="tc-price">From <strong>$6,800</strong><span>/person</span></div>
+                            <a href="404.html" class="btn btn-primary">Book Tour</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal-card" data-category="honeymoon">
+                    <div class="tc-img-wrap">
+                        <img src="images/Santorini Romance.webp" alt="Santorini Romance" loading="lazy">
+                        <div class="tc-badge">Trending</div>
+                        <div class="tc-cat-tag">Honeymoon</div>
+                        <button class="tc-wishlist" aria-label="Add to wishlist"><i class="ri-heart-line"></i></button>
+                    </div>
+                    <div class="tc-body">
+                        <div class="tc-top">
+                            <div><h3>Santorini Romance</h3><p class="tc-location"><i class="ri-map-pin-2-line"></i> Greece</p></div>
+                            <div class="tc-rating"><i class="ri-star-fill"></i> 4.9</div>
+                        </div>
+                        <p class="tc-desc">Candlelit clifftop dinners, private cave suites and caldera cruises for the perfect romantic getaway.</p>
+                        <div class="tc-meta-row">
+                            <span><i class="ri-time-line"></i> 8 Days</span>
+                            <span><i class="ri-user-line"></i> 2 pax</span>
+                            <span><i class="ri-sun-line"></i> Apr-Oct</span>
+                            <span><i class="ri-bar-chart-2-line"></i> Easy</span>
+                        </div>
+                        <div class="tc-footer">
+                            <div class="tc-price">From <strong>$4,200</strong><span>/person</span></div>
+                            <a href="404.html" class="btn btn-primary">Book Tour</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal-card" data-category="family">
+                    <div class="tc-img-wrap">
+                        <img src="images/African Safari Family.webp" alt="African Safari" loading="lazy">
+                        <div class="tc-badge tc-badge-hot">Hot Deal</div>
+                        <div class="tc-cat-tag">Family</div>
+                        <button class="tc-wishlist" aria-label="Add to wishlist"><i class="ri-heart-line"></i></button>
+                    </div>
+                    <div class="tc-body">
+                        <div class="tc-top">
+                            <div><h3>African Safari Family</h3><p class="tc-location"><i class="ri-map-pin-2-line"></i> Kenya &amp; Tanzania</p></div>
+                            <div class="tc-rating"><i class="ri-star-fill"></i> 4.8</div>
+                        </div>
+                        <p class="tc-desc">Witness the Great Migration, spot the Big Five and create memories your family will treasure forever.</p>
+                        <div class="tc-meta-row">
+                            <span><i class="ri-time-line"></i> 12 Days</span>
+                            <span><i class="ri-user-line"></i> 4-8 pax</span>
+                            <span><i class="ri-sun-line"></i> Jul-Oct</span>
+                            <span><i class="ri-bar-chart-2-line"></i> Moderate</span>
+                        </div>
+                        <div class="tc-footer">
+                            <div class="tc-price">From <strong>$5,400</strong><span>/person</span></div>
+                            <a href="404.html" class="btn btn-primary">Book Tour</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal-card" data-category="adventure">
+                    <div class="tc-img-wrap">
+                        <img src="images/Patagonia Wilderness.webp" alt="Patagonia" loading="lazy">
+                        <div class="tc-badge">New</div>
+                        <div class="tc-cat-tag">Adventure</div>
+                        <button class="tc-wishlist" aria-label="Add to wishlist"><i class="ri-heart-line"></i></button>
+                    </div>
+                    <div class="tc-body">
+                        <div class="tc-top">
+                            <div><h3>Patagonia Wilderness</h3><p class="tc-location"><i class="ri-map-pin-2-line"></i> Argentina &amp; Chile</p></div>
+                            <div class="tc-rating"><i class="ri-star-fill"></i> 4.9</div>
+                        </div>
+                        <p class="tc-desc">Glaciers, jagged peaks and pristine lakes — trek through one of Earth's last true wilderness frontiers.</p>
+                        <div class="tc-meta-row">
+                            <span><i class="ri-time-line"></i> 16 Days</span>
+                            <span><i class="ri-user-line"></i> 6-10 pax</span>
+                            <span><i class="ri-sun-line"></i> Nov-Feb</span>
+                            <span><i class="ri-bar-chart-2-line"></i> Challenging</span>
+                        </div>
+                        <div class="tc-footer">
+                            <div class="tc-price">From <strong>$4,800</strong><span>/person</span></div>
+                            <a href="404.html" class="btn btn-primary">Book Tour</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal-card" data-category="cultural">
+                    <div class="tc-img-wrap">
+                        <img src="images/Japan Cherry Blossom.webp" alt="Japan Cherry Blossom" loading="lazy">
+                        <div class="tc-badge">Seasonal</div>
+                        <div class="tc-cat-tag">Cultural</div>
+                        <button class="tc-wishlist" aria-label="Add to wishlist"><i class="ri-heart-line"></i></button>
+                    </div>
+                    <div class="tc-body">
+                        <div class="tc-top">
+                            <div><h3>Japan Cherry Blossom</h3><p class="tc-location"><i class="ri-map-pin-2-line"></i> Japan</p></div>
+                            <div class="tc-rating"><i class="ri-star-fill"></i> 5.0</div>
+                        </div>
+                        <p class="tc-desc">Sakura season in Kyoto, Tokyo and Nara — ancient temples, bullet trains and blossom-lined rivers.</p>
+                        <div class="tc-meta-row">
+                            <span><i class="ri-time-line"></i> 12 Days</span>
+                            <span><i class="ri-user-line"></i> 8-15 pax</span>
+                            <span><i class="ri-sun-line"></i> Mar-Apr</span>
+                            <span><i class="ri-bar-chart-2-line"></i> Easy</span>
+                        </div>
+                        <div class="tc-footer">
+                            <div class="tc-price">From <strong>$3,600</strong><span>/person</span></div>
+                            <a href="404.html" class="btn btn-primary">Book Tour</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal-card" data-category="luxury">
+                    <div class="tc-img-wrap">
+                        <img src="images/Amalfi Coast Luxury.webp" alt="Amalfi Coast Luxury" loading="lazy">
+                        <div class="tc-badge tc-badge-premium">Premium</div>
+                        <div class="tc-cat-tag">Luxury</div>
+                        <button class="tc-wishlist" aria-label="Add to wishlist"><i class="ri-heart-line"></i></button>
+                    </div>
+                    <div class="tc-body">
+                        <div class="tc-top">
+                            <div><h3>Amalfi Coast Luxury</h3><p class="tc-location"><i class="ri-map-pin-2-line"></i> Italy</p></div>
+                            <div class="tc-rating"><i class="ri-star-fill"></i> 4.9</div>
+                        </div>
+                        <p class="tc-desc">Private yacht charter, Michelin-star dining and cliffside villa stays in Positano along the Italian Riviera.</p>
+                        <div class="tc-meta-row">
+                            <span><i class="ri-time-line"></i> 9 Days</span>
+                            <span><i class="ri-user-line"></i> 2-6 pax</span>
+                            <span><i class="ri-sun-line"></i> May-Sep</span>
+                            <span><i class="ri-bar-chart-2-line"></i> Relaxed</span>
+                        </div>
+                        <div class="tc-footer">
+                            <div class="tc-price">From <strong>$7,500</strong><span>/person</span></div>
+                            <a href="404.html" class="btn btn-primary">Book Tour</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal-card" data-category="honeymoon">
+                    <div class="tc-img-wrap">
+                        <img src="images/Bali Romance Retreat.webp" alt="Bali Romance" loading="lazy">
+                        <div class="tc-badge">Top Rated</div>
+                        <div class="tc-cat-tag">Honeymoon</div>
+                        <button class="tc-wishlist" aria-label="Add to wishlist"><i class="ri-heart-line"></i></button>
+                    </div>
+                    <div class="tc-body">
+                        <div class="tc-top">
+                            <div><h3>Bali Romance Retreat</h3><p class="tc-location"><i class="ri-map-pin-2-line"></i> Bali, Indonesia</p></div>
+                            <div class="tc-rating"><i class="ri-star-fill"></i> 4.8</div>
+                        </div>
+                        <p class="tc-desc">Rice terrace sunrise walks, couples spa, private beach dinners and sacred temple visits in Bali.</p>
+                        <div class="tc-meta-row">
+                            <span><i class="ri-time-line"></i> 10 Days</span>
+                            <span><i class="ri-user-line"></i> 2 pax</span>
+                            <span><i class="ri-sun-line"></i> Apr-Oct</span>
+                            <span><i class="ri-bar-chart-2-line"></i> Easy</span>
+                        </div>
+                        <div class="tc-footer">
+                            <div class="tc-price">From <strong>$3,100</strong><span>/person</span></div>
+                            <a href="404.html" class="btn btn-primary">Book Tour</a>
+                        </div>
+                    </div>
+                </div>      </div>
+
+            </div>
+
+            <div class="tours-no-results" id="toursNoResults" style="display:none;">
+                <i class="ri-search-eye-line"></i>
+                <h3>No Tours Found</h3>
+                <p>Try a different filter.</p>
+            </div>
+            <div class="tours-load-more">
+                <button class="btn btn-outline" id="toursLoadMore" style="padding:14px 40px;font-size:1rem;">
+                    <i class="ri-refresh-line"></i> Load More Tours
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="tours-how-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Process</span>
+                <h2 class="section-title">How It <em>Works</em></h2>
+                <p class="section-desc">Booking your dream tour is simple — just four easy steps to your next adventure.</p>
+            </div>
+            <div class="tours-how-grid">
+                <div class="tours-how-card reveal-card">
+                    <div class="thow-num">01</div>
+                    <div class="thow-icon"><i class="ri-search-line"></i></div>
+                    <h3>Browse &amp; Choose</h3>
+                    <p>Explore our curated tours and filter by style, duration, budget and destination.</p>
+                </div>
+                <div class="tours-how-arrow reveal-card"><i class="ri-arrow-right-line"></i></div>
+                <div class="tours-how-card reveal-card">
+                    <div class="thow-num">02</div>
+                    <div class="thow-icon"><i class="ri-calendar-check-line"></i></div>
+                    <h3>Select Dates</h3>
+                    <p>Pick your preferred departure date from flexible scheduling options.</p>
+                </div>
+                <div class="tours-how-arrow reveal-card"><i class="ri-arrow-right-line"></i></div>
+                <div class="tours-how-card reveal-card">
+                    <div class="thow-num">03</div>
+                    <div class="thow-icon"><i class="ri-secure-payment-line"></i></div>
+                    <h3>Secure Booking</h3>
+                    <p>Reserve your spot with a small deposit. Full payment due 60 days before departure.</p>
+                </div>
+                <div class="tours-how-arrow reveal-card"><i class="ri-arrow-right-line"></i></div>
+                <div class="tours-how-card reveal-card">
+                    <div class="thow-num">04</div>
+                    <div class="thow-icon"><i class="ri-plane-line"></i></div>
+                    <h3>Enjoy the Journey</h3>
+                    <p>Pack your bags! Your expert guide and perfectly planned itinerary are ready.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="tours-why-section">
+        <div class="tours-why-bg"></div>
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" style="background:rgba(14,165,233,0.15);color:#7dd3fc;">Why Stackly</span>
+                <h2 class="section-title" style="color:#fff;">Trusted by <em>50,000+</em> Travellers</h2>
+                <p class="section-desc" style="color:rgba(255,255,255,0.6);">We engineer moments that become lifelong memories.</p>
+            </div>
+            <div class="tours-why-grid">
+                <div class="tours-why-card reveal-card">
+                    <div class="twy-icon"><i class="ri-shield-check-line"></i></div>
+                    <h3>100% Safe &amp; Vetted</h3>
+                    <p>Every operator, accommodation and guide is personally vetted by our travel team.</p>
+                </div>
+                <div class="tours-why-card reveal-card">
+                    <div class="twy-icon"><i class="ri-customer-service-2-line"></i></div>
+                    <h3>24/7 Expert Support</h3>
+                    <p>Our travel specialists are available around the clock — before, during and after your trip.</p>
+                </div>
+                <div class="tours-why-card reveal-card">
+                    <div class="twy-icon"><i class="ri-money-dollar-circle-line"></i></div>
+                    <h3>Best Price Guarantee</h3>
+                    <p>Find the same tour cheaper elsewhere? We match the price plus give you a $100 credit.</p>
+                </div>
+                <div class="tours-why-card reveal-card">
+                    <div class="twy-icon"><i class="ri-recycle-line"></i></div>
+                    <h3>Sustainable Travel</h3>
+                    <p>All tours are carbon-offset and designed to support local communities and ecosystems.</p>
+                </div>
+                <div class="tours-why-card reveal-card">
+                    <div class="twy-icon"><i class="ri-group-line"></i></div>
+                    <h3>Small Group Sizes</h3>
+                    <p>We cap every tour at 16 guests maximum for personal attention and authentic experiences.</p>
+                </div>
+                <div class="tours-why-card reveal-card">
+                    <div class="twy-icon"><i class="ri-edit-line"></i></div>
+                    <h3>Fully Customisable</h3>
+                    <p>Private departure or bespoke itinerary? Every tour can be tailored to your wishes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPOTLIGHT -->
+    <section class="tours-spotlight-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Editor's Pick</span>
+                <h2 class="section-title">Tour of the <em>Month</em></h2>
+            </div>
+            <div class="tours-spotlight reveal">
+                <div class="ts-img-col">
+                    <img src="images/Tour of the Month.webp" alt="Galapagos Islands" loading="lazy">
+                    <div class="ts-img-badge"><i class="ri-award-line"></i> Editor's Pick</div>
+                </div>
+                <div class="ts-info-col">
+                    <div class="ts-tag-row">
+                        <span class="ts-cat-pill">Adventure</span>
+                        <span class="ts-cat-pill">Wildlife</span>
+                        <span class="ts-cat-pill">Exclusive</span>
+                    </div>
+                    <h2>Galapagos Islands Expedition</h2>
+                    <p class="ts-location"><i class="ri-map-pin-2-line"></i> Ecuador, South America</p>
+                    <p class="ts-desc">Sail through the living laboratory that inspired Darwin's theory of evolution. Swim with sea lions, watch giant tortoises roam and snorkel with penguins in crystal waters — guided by certified naturalists on a luxury catamaran.</p>
+                    <div class="ts-highlights">
+                        <div class="ts-hl"><i class="ri-check-line"></i> Certified naturalist guides</div>
+                        <div class="ts-hl"><i class="ri-check-line"></i> Luxury catamaran accommodation</div>
+                        <div class="ts-hl"><i class="ri-check-line"></i> 5 unique islands visited</div>
+                        <div class="ts-hl"><i class="ri-check-line"></i> All meals &amp; snorkelling gear included</div>
+                        <div class="ts-hl"><i class="ri-check-line"></i> Max 16 guests per departure</div>
+                        <div class="ts-hl"><i class="ri-check-line"></i> Carbon-neutral expedition</div>
+                    </div>
+                    <div class="ts-footer">
+                        <div class="ts-price-block">
+                            <span class="ts-from">From</span>
+                            <span class="ts-price-big">$8,900</span>
+                            <span class="ts-per">/person</span>
+                        </div>
+                        <div class="ts-actions">
+                            <a href="404.html" class="btn btn-primary btn-lg">Book This Tour <i class="ri-arrow-right-line"></i></a>
+                            <a href="404.html" class="btn btn-outline">View Itinerary</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="tours-testimonials-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" style="background:rgba(14,165,233,0.15);color:#7dd3fc;">Reviews</span>
+                <h2 class="section-title" style="color:#fff;">What Travellers <em>Say</em></h2>
+                <p class="section-desc" style="color:rgba(255,255,255,0.6);">Real stories from real adventurers who explored the world with us.</p>
+            </div>
+            <div class="tours-testimonials-wrapper">
+                <div class="tours-testimonials-track" id="toursTestimonialsTrack">
+                    <div class="tours-tcard">
+                        <div class="ttc-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p>"The Himalayan Trek exceeded every expectation. Our Sherpa guide was extraordinary, and the views from Base Camp moved me to tears."</p>
+                        <div class="ttc-author">
+                            <img src="images/p1.webp" alt="James R.">
+                            <div><strong>James Richardson</strong><span>Himalayan Trek</span></div>
+                        </div>
+                    </div>
+                    <div class="tours-tcard">
+                        <div class="ttc-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p>"Santorini Romance was absolutely magical. Every detail was perfect — the sunset dinner, the private cave suite. Our honeymoon was unforgettable."</p>
+                        <div class="ttc-author">
+                            <img src="images/p2.webp" alt="Priya K.">
+                            <div><strong>Priya &amp; Kiran</strong><span>Santorini Romance</span></div>
+                        </div>
+                    </div>
+                    <div class="tours-tcard">
+                        <div class="ttc-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p>"The African Safari with the kids was a life-changing experience. Watching the Great Migration together as a family — priceless!"</p>
+                        <div class="ttc-author">
+                            <img src="images/p3.webp" alt="Marcus T.">
+                            <div><strong>Marcus Thompson</strong><span>African Safari Family</span></div>
+                        </div>
+                    </div>
+                    <div class="tours-tcard">
+                        <div class="ttc-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p>"Japan during Cherry Blossom season was a dream. The small group size made everything so intimate and relaxed. Already gifted a tour to my sister!"</p>
+                        <div class="ttc-author">
+                            <img src="images/p1.webp" alt="Elise M.">
+                            <div><strong>Elise Moreau</strong><span>Japan Cherry Blossom</span></div>
+                        </div>
+                    </div>
+                    <div class="tours-tcard">
+                        <div class="ttc-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p>"The Himalayan Trek exceeded every expectation. Our Sherpa guide was extraordinary, and the views from Base Camp moved me to tears."</p>
+                        <div class="ttc-author">
+                            <img src="images/p1.webp" alt="James R.">
+                            <div><strong>James Richardson</strong><span>Himalayan Trek</span></div>
+                        </div>
+                    </div>
+                    <div class="tours-tcard">
+                        <div class="ttc-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p>"Santorini Romance was absolutely magical. Every detail was perfect — the sunset dinner, the private cave suite. Our honeymoon was unforgettable."</p>
+                        <div class="ttc-author">
+                            <img src="images/p2.webp" alt="Priya K.">
+                            <div><strong>Priya &amp; Kiran</strong><span>Santorini Romance</span></div>
+                        </div>
+                    </div>
+                    <div class="tours-tcard">
+                        <div class="ttc-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p>"The African Safari with the kids was a life-changing experience. Watching the Great Migration together as a family — priceless!"</p>
+                        <div class="ttc-author">
+                            <img src="images/p3.webp" alt="Marcus T.">
+                            <div><strong>Marcus Thompson</strong><span>African Safari Family</span></div>
+                        </div>
+                    </div>
+                    <div class="tours-tcard">
+                        <div class="ttc-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p>"Japan during Cherry Blossom season was a dream. The small group size made everything so intimate and relaxed. Already gifted a tour to my sister!"</p>
+                        <div class="ttc-author">
+                            <img src="images/p1.webp" alt="Elise M.">
+                            <div><strong>Elise Moreau</strong><span>Japan Cherry Blossom</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER CTA -->
+    <section class="tours-nl-section">
+        <div class="container">
+            <div class="tours-nl-card reveal">
+                <div class="tours-nl-content">
+                    <div class="tours-nl-icon"><i class="ri-send-plane-2-fill"></i></div>
+                    <h2>Ready to <em>Start Your Adventure?</em></h2>
+                    <p>Join 200,000+ travellers and get exclusive early access to new tour launches, flash deals and expert travel guides.</p>
+                    <form class="tours-nl-form" id="toursNlForm" novalidate>
+                        <div class="tours-nl-input-wrap">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" id="toursNlEmail" placeholder="Enter your email address" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Subscribe <i class="ri-arrow-right-line"></i></button>
+                    </form>
+                    <p class="tours-nl-note"><i class="ri-shield-check-line"></i> No spam, unsubscribe anytime.</p>
+                </div>
+                <div class="tours-nl-deco">
+                    <img src="images/news letter  image.webp" alt="Adventure awaits">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-simple-wrap">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="images/stackly logo.webp" alt="Logo">
+                </a>
+                <ul class="footer-simple-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="footer-simple-address">
+                    <span><i class="ri-map-pin-line"></i> Salem, Tamil Nadu, India</span>
+                    <span><i class="ri-phone-line"></i> +91 0123456789</span>
+                    <span><i class="ri-mail-line"></i> hello@stackly.com</span>
+                </div>
+                <div class="footer-socials">
+                    <a href="404.html" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                    <a href="404.html" aria-label="Facebook"><i class="ri-facebook-circle-line"></i></a>
+                    <a href="404.html" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+                    <a href="404.html" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+                    <a href="404.html" aria-label="Pinterest"><i class="ri-pinterest-line"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026. All rights reserved. Made with <i class="ri-heart-fill" style="color:#f43f5e"></i></p>
+                <div class="footer-legal">
+                    <a href="404.html">Privacy Policy</a>
+                    <a href="404.html">Terms of Service</a>
+                    <a href="404.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="tours.js"></script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Stackly — Let's Plan Your Journey</title>
+    <meta name="description" content="Get in touch with the Stackly team. We're here to help you plan your perfect trip — call, email or visit our office.">
+    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="contact-page">
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- HEADER -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="images/stackly logo.webp" alt="Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="signup.html" class="btn btn-outline">Sign Up</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="tours.html">Tours</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html" class="active">Contact</a>
+            <hr class="menu-divider">
+            <a href="signup.html" class="btn btn-outline" style="text-align:center;justify-content:center;">Sign Up</a>
+            <a href="login.html" class="btn btn-primary" style="text-align:center;justify-content:center;">Login</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="contact-hero">
+        <div class="contact-hero-bg">
+            <img src="images/contact hero.webp" alt="Contact Us" class="contact-hero-img" loading="eager">
+            <div class="contact-hero-overlay"></div>
+        </div>
+        <div class="contact-hero-content container">
+            <div class="contact-hero-badge"><i class="ri-customer-service-2-line"></i> We're Here to Help</div>
+            <h1 class="contact-hero-title">Let's Plan Your <span class="contact-hero-highlight">Dream</span> Journey</h1>
+            <p class="contact-hero-sub">Our expert travel consultants are ready to craft your perfect adventure. Reach out today — no question is too big or too small.</p>
+            <div class="contact-hero-quick">
+                <a href="404.html" class="chq-item"><i class="ri-phone-line"></i><span>+91 0123456789</span></a>
+                <div class="chq-divider"></div>
+                <a href="mailto:hello@stackly.com" class="chq-item"><i class="ri-mail-line"></i><span>hello@stackly.com</span></a>
+                <div class="chq-divider"></div>
+                <span class="chq-item"><i class="ri-time-line"></i><span>Mon – Sun, 8am – 10pm IST</span></span>
+            </div>
+        </div>
+        <div class="contact-hero-scroll">
+            <span>Scroll to explore</span>
+            <div class="contact-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- CONTACT INFO STRIP -->
+    <section class="contact-info-strip">
+        <div class="container">
+            <div class="cis-grid">
+                <div class="cis-card reveal-card">
+                    <div class="cis-icon"><i class="ri-phone-line"></i></div>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with a travel expert</p>
+                    <a href="404.html" class="cis-link">+91 0123456789</a>
+                    <span class="cis-note">Mon – Sun, 8am – 10pm IST</span>
+                </div>
+                <div class="cis-card reveal-card">
+                    <div class="cis-icon"><i class="ri-mail-send-line"></i></div>
+                    <h3>Email Us</h3>
+                    <p>We reply within 2 business hours</p>
+                    <a href="mailto:hello@stackly.com" class="cis-link">hello@stackly.com</a>
+                    <span class="cis-note">Available 24/7</span>
+                </div>
+                <div class="cis-card reveal-card">
+                    <div class="cis-icon"><i class="ri-message-3-line"></i></div>
+                    <h3>Live Chat</h3>
+                    <p>Instant answers from our team</p>
+                    <button class="cis-link cis-chat-btn" id="liveChatBtn">Start Chat Now</button>
+                    <span class="cis-note">Average wait: under 1 minute</span>
+                </div>
+                <div class="cis-card reveal-card">
+                    <div class="cis-icon"><i class="ri-map-pin-line"></i></div>
+                    <h3>Visit Us</h3>
+                    <p>Our global headquarters</p>
+                    <a href="#offices" class="cis-link">Salem, Tamil Nadu, India</a>
+                    <span class="cis-note">Mon – Fri, 9am – 6pm IST</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM + MAP -->
+    <section class="contact-main-section">
+        <div class="container">
+            <div class="contact-main-grid">
+
+                <!-- FORM -->
+                <div class="contact-form-col reveal">
+                    <div class="section-header" style="text-align:left;margin-bottom:40px;">
+                        <span class="section-tag">Get In Touch</span>
+                        <h2 class="section-title">Send Us a <em>Message</em></h2>
+                        <p class="section-desc" style="margin:0;">Fill in the form below and one of our travel consultants will get back to you within 2 hours.</p>
+                    </div>
+
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="cf-row">
+                            <div class="cf-field">
+                                <label for="cfFirstName">First Name *</label>
+                                <div class="cf-input-wrap">
+                                    <i class="ri-user-line"></i>
+                                    <input type="text" id="cfFirstName" name="firstName" placeholder="John" required>
+                                </div>
+                            </div>
+                            <div class="cf-field">
+                                <label for="cfLastName">Last Name *</label>
+                                <div class="cf-input-wrap">
+                                    <i class="ri-user-line"></i>
+                                    <input type="text" id="cfLastName" name="lastName" placeholder="Smith" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cf-row">
+                            <div class="cf-field">
+                                <label for="cfEmail">Email Address *</label>
+                                <div class="cf-input-wrap">
+                                    <i class="ri-mail-line"></i>
+                                    <input type="email" id="cfEmail" name="email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+                            <div class="cf-field">
+                                <label for="cfPhone">Phone Number</label>
+                                <div class="cf-input-wrap">
+                                    <i class="ri-phone-line"></i>
+                                    <input type="tel" id="cfPhone" name="phone" placeholder="10-digit mobile number" maxlength="10" pattern="[0-9]{10}" title="Mobile number must be exactly 10 digits">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cf-field">
+                            <label for="cfSubject">Subject *</label>
+                            <div class="cf-input-wrap">
+                                <i class="ri-chat-1-line"></i>
+                                <select id="cfSubject" name="subject" required>
+                                    <option value="" disabled selected>What can we help you with?</option>
+                                    <option value="booking">Tour Booking</option>
+                                    <option value="custom">Custom Itinerary</option>
+                                    <option value="group">Group Travel</option>
+                                    <option value="honeymoon">Honeymoon Planning</option>
+                                    <option value="support">Existing Booking Support</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cf-field">
+                            <label for="cfDestination">Dream Destination</label>
+                            <div class="cf-input-wrap">
+                                <i class="ri-map-pin-2-line"></i>
+                                <input type="text" id="cfDestination" name="destination" placeholder="e.g. Bali, Japan, Patagonia...">
+                            </div>
+                        </div>
+                        <div class="cf-field">
+                            <label for="cfMessage">Your Message *</label>
+                            <div class="cf-input-wrap cf-textarea-wrap">
+                                <i class="ri-message-2-line"></i>
+                                <textarea id="cfMessage" name="message" rows="5" placeholder="Tell us about your dream trip — destination, dates, group size, budget, or any special requirements..." required></textarea>
+                            </div>
+                        </div>
+                        <div class="cf-privacy">
+                            <input type="checkbox" id="cfPrivacy" required>
+                            <label for="cfPrivacy">I agree to the <a href="404.html">Privacy Policy</a> and consent to being contacted by Stackly.</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary cf-submit" id="cfSubmitBtn">
+                            Send Message <i class="ri-send-plane-line"></i>
+                        </button>
+                        <div class="cf-success" id="cfSuccess" style="display:none;">
+                            <i class="ri-checkbox-circle-fill"></i>
+                            <div>
+                                <strong>Message Sent!</strong>
+                                <p>Thank you — a consultant will reply within 2 hours.</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- SIDE INFO -->
+                <div class="contact-side-col reveal">
+                    <div class="contact-side-img">
+                        <img src="images/c1.webp" alt="Travel Consultant">
+                        <div class="cs-img-badge">
+                            <i class="ri-star-fill"></i>
+                            <span>Rated 4.9/5 by 50,000+ Travellers</span>
+                        </div>
+                    </div>
+                    <div class="contact-trust-grid">
+                        <div class="ctg-item">
+                            <i class="ri-shield-check-line"></i>
+                            <div><strong>Secure & Private</strong><span>Your data is always protected</span></div>
+                        </div>
+                        <div class="ctg-item">
+                            <i class="ri-time-line"></i>
+                            <div><strong>Fast Response</strong><span>Reply within 2 business hours</span></div>
+                        </div>
+                        <div class="ctg-item">
+                            <i class="ri-award-line"></i>
+                            <div><strong>Expert Advice</strong><span>15+ years of travel expertise</span></div>
+                        </div>
+                        <div class="ctg-item">
+                            <i class="ri-global-line"></i>
+                            <div><strong>120+ Countries</strong><span>We've been everywhere you want to go</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFICES -->
+    <section class="contact-offices-section" id="offices">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Global Offices</span>
+                <h2 class="section-title">Find Us <em>Worldwide</em></h2>
+                <p class="section-desc">Walk in and chat with our travel consultants in person at any of our global offices.</p>
+            </div>
+            <div class="offices-grid">
+                <div class="office-card reveal-card">
+                    <div class="office-img-wrap">
+                        <img src="images/contact.webp" alt="Salem Headquarters" loading="lazy">
+                        <div class="office-flag">&#127470;&#127475;</div>
+                    </div>
+                    <div class="office-body">
+                        <h3>Salem Headquarters</h3>
+                        <p class="office-hq"><i class="ri-home-4-line"></i> Global HQ</p>
+                        <ul class="office-info">
+                            <li><i class="ri-map-pin-line"></i> Salem, Tamil Nadu, India</li>
+                            <li><i class="ri-phone-line"></i> +91 0123456789</li>
+                            <li><i class="ri-time-line"></i> Mon–Fri 9am–6pm IST</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="office-card reveal-card">
+                    <div class="office-img-wrap">
+                        <img src="images/c2.webp" alt="London Office" loading="lazy">
+                        <div class="office-flag">&#127468;&#127463;</div>
+                    </div>
+                    <div class="office-body">
+                        <h3>London</h3>
+                        <p class="office-hq"><i class="ri-building-2-line"></i> European Office</p>
+                        <ul class="office-info">
+                            <li><i class="ri-map-pin-line"></i> 45 Kensington High St, London W8 5ED</li>
+                            <li><i class="ri-phone-line"></i> +44 20 7946 0321</li>
+                            <li><i class="ri-time-line"></i> Mon–Fri 9am–6pm GMT</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="office-card reveal-card">
+                    <div class="office-img-wrap">
+                        <img src="images/c3.webp" alt="Dubai Office" loading="lazy">
+                        <div class="office-flag">&#127462;&#127466;</div>
+                    </div>
+                    <div class="office-body">
+                        <h3>Dubai</h3>
+                        <p class="office-hq"><i class="ri-building-2-line"></i> Middle East &amp; Asia Hub</p>
+                        <ul class="office-info">
+                            <li><i class="ri-map-pin-line"></i> Level 22, DIFC Gate Building, Dubai</li>
+                            <li><i class="ri-phone-line"></i> +971 4 567 8901</li>
+                            <li><i class="ri-time-line"></i> Sun–Thu 9am–6pm GST</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="contact-faq-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">FAQs</span>
+                <h2 class="section-title">Common <em>Questions</em></h2>
+                <p class="section-desc">Quick answers to the questions we hear most often from our travellers.</p>
+            </div>
+            <div class="contact-faq-grid">
+                <div class="faq-list">
+                    <div class="faq-item reveal-card">
+                        <button class="faq-q" id="fq1">How far in advance should I book? <i class="ri-add-line faq-icon"></i></button>
+                        <div class="faq-a"><p>We recommend booking at least 3–6 months in advance for peak-season trips, especially popular routes like Everest Base Camp or Japan during Cherry Blossom season. However, we can often accommodate last-minute bookings for off-peak destinations.</p></div>
+                    </div>
+                    <div class="faq-item reveal-card">
+                        <button class="faq-q" id="fq2">Can I customise an existing tour? <i class="ri-add-line faq-icon"></i></button>
+                        <div class="faq-a"><p>Absolutely! Every tour in our catalogue can be tailored — private departures, bespoke itineraries, upgraded accommodation or extended nights. Simply contact us and our consultants will build your perfect trip from scratch.</p></div>
+                    </div>
+                    <div class="faq-item reveal-card">
+                        <button class="faq-q" id="fq3">What is your cancellation policy? <i class="ri-add-line faq-icon"></i></button>
+                        <div class="faq-a"><p>We offer free cancellation up to 60 days before departure. For cancellations within 60–30 days, a 25% fee applies. Within 30 days, 50% of the total is retained. We always recommend purchasing travel insurance for added peace of mind.</p></div>
+                    </div>
+                    <div class="faq-item reveal-card">
+                        <button class="faq-q" id="fq4">Do you offer travel insurance? <i class="ri-add-line faq-icon"></i></button>
+                        <div class="faq-a"><p>We partner with leading insurance providers to offer comprehensive travel insurance covering medical emergencies, trip cancellation, lost baggage and more. We strongly recommend adding insurance to every booking.</p></div>
+                    </div>
+                    <div class="faq-item reveal-card">
+                        <button class="faq-q" id="fq5">What payment methods do you accept? <i class="ri-add-line faq-icon"></i></button>
+                        <div class="faq-a"><p>We accept all major credit and debit cards (Visa, Mastercard, Amex), PayPal, bank transfers and instalment plans. A 20% deposit secures your booking, with the balance due 60 days before departure.</p></div>
+                    </div>
+                </div>
+                <div class="contact-faq-side reveal">
+                    <img src="images/contact 3.webp" alt="Customer support">
+                    <div class="cfaq-side-card">
+                        <i class="ri-customer-service-2-line"></i>
+                        <h4>Still have questions?</h4>
+                        <p>Our travel experts are ready to help 7 days a week.</p>
+                        <a href="404.html" class="btn btn-primary" style="margin-top:4px;">Call Us Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP SECTION -->
+    <section style="width:100%; background:var(--dark); padding:0;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3907.1615358008926!2d78.17140487513792!3d11.682961841818727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3babefef7fd970bb%3A0xe11aef1a71994f9!2sStackly!5e0!3m2!1sen!2sin!4v1784706632754!5m2!1sen!2sin" width="100%" height="450" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-simple-wrap">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="images/stackly logo.webp" alt="Logo">
+                </a>
+                <ul class="footer-simple-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="footer-simple-address">
+                    <span><i class="ri-map-pin-line"></i> Salem, Tamil Nadu, India</span>
+                    <span><i class="ri-phone-line"></i> +91 0123456789</span>
+                    <span><i class="ri-mail-line"></i> hello@stackly.com</span>
+                </div>
+                <div class="footer-socials">
+                    <a href="404.html" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                    <a href="404.html" aria-label="Facebook"><i class="ri-facebook-circle-line"></i></a>
+                    <a href="404.html" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+                    <a href="404.html" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+                    <a href="404.html" aria-label="Pinterest"><i class="ri-pinterest-line"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026. All rights reserved. Made with <i class="ri-heart-fill" style="color:#f43f5e"></i></p>
+                <div class="footer-legal">
+                    <a href="404.html">Privacy Policy</a><a href="404.html">Terms of Service</a><a href="404.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

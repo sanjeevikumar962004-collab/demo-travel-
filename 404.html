@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found | Stackly</title>
+    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body.not-found-page {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .nf-hero {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .nf-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .nf-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            transform: scale(1.05);
+            transition: transform 10s ease;
+        }
+        .nf-hero:hover .nf-bg img {
+            transform: scale(1);
+        }
+        .nf-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(14,165,233,0.3) 100%);
+            backdrop-filter: blur(4px);
+        }
+        .nf-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .nf-code {
+            font-family: var(--font-heading);
+            font-weight: 900;
+            font-size: clamp(6rem, 15vw, 10rem);
+            line-height: 1;
+            background: linear-gradient(120deg, var(--accent), #f43f5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: float 6s ease-in-out infinite;
+        }
+        .nf-title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: #fff;
+        }
+        .nf-desc {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body class="not-found-page">
+
+    <!-- HEADER -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="images/stackly logo.webp" alt="Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="signup.html" class="btn btn-outline">Sign Up</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 404 CONTENT -->
+    <main class="nf-hero">
+        <div class="nf-bg">
+            <img src="images/destination hero.webp" alt="Lost in the mountains">
+            <div class="nf-overlay"></div>
+        </div>
+        <div class="nf-content">
+            <div class="nf-code">404</div>
+            <h1 class="nf-title">Off the Beaten Path</h1>
+            <p class="nf-desc">Looks like you've wandered a bit too far. The page you are looking for doesn't exist, or has been moved to a new destination.</p>
+            <a href="index.html" class="btn btn-primary btn-lg" style="padding: 14px 36px;">
+                <i class="ri-map-2-line"></i> Back to the Map
+            </a>
+        </div>
+    </main>
+
+</body>
+</html>

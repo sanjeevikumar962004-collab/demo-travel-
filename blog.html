@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Stackly — Travel Stories &amp; Inspiration</title>
+    <meta name="description" content="Explore Stackly's travel blog — expert guides, destination stories, packing tips and cultural insights from around the world.">
+    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body class="blog-page">
+
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- HEADER -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="images/stackly logo.webp" alt="Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="signup.html" class="btn btn-outline">Sign Up</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="tours.html">Tours</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="contact.html">Contact</a>
+            <hr class="menu-divider">
+            <a href="signup.html" class="btn btn-outline" style="text-align:center;justify-content:center;">Sign Up</a>
+            <a href="login.html" class="btn btn-primary" style="text-align:center;justify-content:center;">Login</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="blog-hero">
+        <div class="blog-hero-bg">
+            <img src="images/blog hero.webp" alt="Travel Blog" class="blog-hero-img" loading="eager">
+            <div class="blog-hero-overlay"></div>
+        </div>
+        <div class="blog-hero-content container">
+            <div class="blog-hero-badge"><i class="ri-quill-pen-line"></i> Stories from the Road</div>
+            <h1 class="blog-hero-title">Travel <span class="blog-hero-highlight">Stories</span> &amp; Inspiration</h1>
+            <p class="blog-hero-sub">Expert guides, hidden gems, cultural insights and honest travel advice — written by adventurers, for adventurers.</p>
+            <div class="blog-search-bar">
+                <i class="ri-search-line"></i>
+                <input type="text" id="blogSearchInput" placeholder="Search articles, destinations, tips...">
+                <button class="blog-search-btn" id="blogSearchBtn">Search</button>
+            </div>
+        </div>
+        <div class="blog-hero-scroll">
+            <span>Scroll to explore</span>
+            <div class="blog-scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- CATEGORY FILTER -->
+    <section class="blog-filter-section">
+        <div class="container">
+            <div class="blog-filter-tabs" id="blogFilterTabs">
+                <button class="blog-tab active" data-filter="all"><i class="ri-apps-line"></i> All</button>
+                <button class="blog-tab" data-filter="destination"><i class="ri-map-pin-2-line"></i> Destinations</button>
+                <button class="blog-tab" data-filter="tips"><i class="ri-lightbulb-line"></i> Travel Tips</button>
+                <button class="blog-tab" data-filter="culture"><i class="ri-ancient-gate-line"></i> Culture</button>
+                <button class="blog-tab" data-filter="food"><i class="ri-restaurant-line"></i> Food</button>
+                <button class="blog-tab" data-filter="adventure"><i class="ri-mountain-line"></i> Adventure</button>
+                <button class="blog-tab" data-filter="luxury"><i class="ri-vip-crown-line"></i> Luxury</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED POST -->
+    <section class="blog-featured-section">
+        <div class="container">
+            <div class="blog-featured-card reveal">
+                <div class="bfc-img-col">
+                    <img src="images/Patagonia Wilderness.webp" alt="Patagonia Guide" loading="lazy">
+                    <div class="bfc-cat-pill">Adventure</div>
+                </div>
+                <div class="bfc-content-col">
+                    <span class="bfc-label">Featured Story</span>
+                    <h2>The Ultimate Patagonia Trekking Guide: Everything You Need to Know</h2>
+                    <div class="bfc-meta">
+                        <img src="images/p1.webp" alt="Author" class="bfc-author-img">
+                        <div>
+                            <strong>James Richardson</strong>
+                            <span>June 15, 2026 &middot; 12 min read</span>
+                        </div>
+                    </div>
+                    <p>From the jagged peaks of Torres del Paine to the vast Perito Moreno glacier, Patagonia is one of Earth's last great wildernesses. Here is everything you need to plan the perfect adventure — permits, gear, routes, and the moments that will take your breath away.</p>
+                    <a href="404.html" class="btn btn-primary">Read Article <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG GRID -->
+    <section class="blog-grid-section" id="blog-articles">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Latest Articles</span>
+                <h2 class="section-title">Fresh from the <em>Road</em></h2>
+                <p class="section-desc">New stories every week from our global network of travel writers and photographers.</p>
+            </div>
+
+            <div class="blog-cards-grid" id="blogCardsGrid">
+
+                <article class="blog-post-card reveal-card" data-category="destination">
+                    <div class="bpc-img-wrap">
+                        <img src="images/blog 1.webp" alt="Santorini Sunsets" loading="lazy">
+                        <div class="bpc-cat">Destination</div>
+                    </div>
+                    <div class="bpc-body">
+                        <div class="bpc-meta"><span><i class="ri-calendar-line"></i> Jul 10, 2026</span><span><i class="ri-time-line"></i> 7 min read</span></div>
+                        <h3>15 Hidden Spots in Santorini That Tourists Always Miss</h3>
+                        <p>Beyond the famous blue domes and sunset crowds, Santorini hides quiet villages, secret beaches and ancient ruins that most visitors never discover.</p>
+                        <div class="bpc-footer">
+                            <div class="bpc-author"><img src="images/p2.webp" alt="Author"><span>Maria Santos</span></div>
+                            <a href="404.html" class="bpc-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post-card reveal-card" data-category="tips">
+                    <div class="bpc-img-wrap">
+                        <img src="images/blog 2.webp" alt="Packing Tips" loading="lazy">
+                        <div class="bpc-cat">Travel Tips</div>
+                    </div>
+                    <div class="bpc-body">
+                        <div class="bpc-meta"><span><i class="ri-calendar-line"></i> Jul 6, 2026</span><span><i class="ri-time-line"></i> 5 min read</span></div>
+                        <h3>The One-Bag Travel Method: Pack Everything in a Carry-On</h3>
+                        <p>Learn how seasoned travellers fit two weeks of clothes, gear and essentials into a single 20L backpack — and why it will change how you travel forever.</p>
+                        <div class="bpc-footer">
+                            <div class="bpc-author"><img src="images/p1.webp" alt="Author"><span>James Richardson</span></div>
+                            <a href="404.html" class="bpc-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post-card reveal-card" data-category="food">
+                    <div class="bpc-img-wrap">
+                        <img src="images/blog 3.webp" alt="Tokyo Food" loading="lazy">
+                        <div class="bpc-cat">Food</div>
+                    </div>
+                    <div class="bpc-body">
+                        <div class="bpc-meta"><span><i class="ri-calendar-line"></i> Jul 1, 2026</span><span><i class="ri-time-line"></i> 8 min read</span></div>
+                        <h3>Tokyo Street Food: A Complete Guide to Eating Like a Local</h3>
+                        <p>From steaming ramen stalls at midnight to the freshest sushi at Tsukiji Market — the ultimate foodie guide to navigating Tokyo's incredible culinary scene.</p>
+                        <div class="bpc-footer">
+                            <div class="bpc-author"><img src="images/p3.webp" alt="Author"><span>Elise Moreau</span></div>
+                            <a href="404.html" class="bpc-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post-card reveal-card" data-category="culture">
+                    <div class="bpc-img-wrap">
+                        <img src="images/blog 4.webp" alt="India Culture" loading="lazy">
+                        <div class="bpc-cat">Culture</div>
+                    </div>
+                    <div class="bpc-body">
+                        <div class="bpc-meta"><span><i class="ri-calendar-line"></i> Jun 25, 2026</span><span><i class="ri-time-line"></i> 9 min read</span></div>
+                        <h3>Sacred India: Understanding Temples, Festivals and Local Traditions</h3>
+                        <p>India's spiritual heritage is dazzling and complex. Here is how to experience it respectfully, meaningfully and with the depth it truly deserves.</p>
+                        <div class="bpc-footer">
+                            <div class="bpc-author"><img src="images/p2.webp" alt="Author"><span>Ravi Sharma</span></div>
+                            <a href="404.html" class="bpc-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post-card reveal-card" data-category="adventure">
+                    <div class="bpc-img-wrap">
+                        <img src="images/blog 5.webp" alt="Himalayan Trek" loading="lazy">
+                        <div class="bpc-cat">Adventure</div>
+                    </div>
+                    <div class="bpc-body">
+                        <div class="bpc-meta"><span><i class="ri-calendar-line"></i> Jun 18, 2026</span><span><i class="ri-time-line"></i> 11 min read</span></div>
+                        <h3>Everest Base Camp: Honest Guide to the Trek No One Tells You About</h3>
+                        <p>The altitude sickness, the sleepless nights, the breathtaking dawn light over Khumbu — an honest account of what it is really like to reach EBC.</p>
+                        <div class="bpc-footer">
+                            <div class="bpc-author"><img src="images/p1.webp" alt="Author"><span>James Richardson</span></div>
+                            <a href="404.html" class="bpc-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post-card reveal-card" data-category="luxury">
+                    <div class="bpc-img-wrap">
+                        <img src="images/blog 6.webp" alt="Amalfi Luxury" loading="lazy">
+                        <div class="bpc-cat">Luxury</div>
+                    </div>
+                    <div class="bpc-body">
+                        <div class="bpc-meta"><span><i class="ri-calendar-line"></i> Jun 10, 2026</span><span><i class="ri-time-line"></i> 6 min read</span></div>
+                        <h3>Italy's Most Exclusive Private Villas on the Amalfi Coast</h3>
+                        <p>We reviewed 12 of the most exclusive villa stays on the Amalfi Coast — from helicopter-access hideaways to cliff-edge infinity pools above Positano.</p>
+                        <div class="bpc-footer">
+                            <div class="bpc-author"><img src="images/p3.webp" alt="Author"><span>Maria Santos</span></div>
+                            <a href="404.html" class="bpc-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post-card reveal-card" data-category="destination">
+                    <div class="bpc-img-wrap">
+                        <img src="images/blo 7.webp" alt="Bali Guide" loading="lazy">
+                        <div class="bpc-cat">Destination</div>
+                    </div>
+                    <div class="bpc-body">
+                        <div class="bpc-meta"><span><i class="ri-calendar-line"></i> Jun 3, 2026</span><span><i class="ri-time-line"></i> 8 min read</span></div>
+                        <h3>Bali Beyond Ubud: 7 Under-the-Radar Areas You Must Explore</h3>
+                        <p>Sidemen, Amed, Munduk, Nusa Penida — move beyond the tourist trail and discover the Bali that most travellers never see.</p>
+                        <div class="bpc-footer">
+                            <div class="bpc-author"><img src="images/p2.webp" alt="Author"><span>Elise Moreau</span></div>
+                            <a href="404.html" class="bpc-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post-card reveal-card" data-category="tips">
+                    <div class="bpc-img-wrap">
+                        <img src="images/blog 8.webp" alt="Flight Hacks" loading="lazy">
+                        <div class="bpc-cat">Travel Tips</div>
+                    </div>
+                    <div class="bpc-body">
+                        <div class="bpc-meta"><span><i class="ri-calendar-line"></i> May 28, 2026</span><span><i class="ri-time-line"></i> 6 min read</span></div>
+                        <h3>10 Flight Hacks That Will Save You Hundreds Every Year</h3>
+                        <p>Flexible dates, hidden city ticketing, credit card points, error fares — the smartest strategies for booking cheap flights that most people overlook.</p>
+                        <div class="bpc-footer">
+                            <div class="bpc-author"><img src="images/p1.webp" alt="Author"><span>Ravi Sharma</span></div>
+                            <a href="404.html" class="bpc-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post-card reveal-card" data-category="culture">
+                    <div class="bpc-img-wrap">
+                        <img src="images/blog 9.webp" alt="Japan Culture" loading="lazy">
+                        <div class="bpc-cat">Culture</div>
+                    </div>
+                    <div class="bpc-body">
+                        <div class="bpc-meta"><span><i class="ri-calendar-line"></i> May 20, 2026</span><span><i class="ri-time-line"></i> 10 min read</span></div>
+                        <h3>Japanese Etiquette: 20 Rules Every Visitor Must Know Before Travelling</h3>
+                        <p>From bowing and shoes to chopstick rules and onsen culture — a warm and practical guide to navigating Japan's rich traditions with grace and respect.</p>
+                        <div class="bpc-footer">
+                            <div class="bpc-author"><img src="images/p3.webp" alt="Author"><span>Elise Moreau</span></div>
+                            <a href="404.html" class="bpc-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="blog-no-results" id="blogNoResults" style="display:none;">
+                <i class="ri-article-line"></i>
+                <h3>No Articles Found</h3>
+                <p>Try a different category or search term.</p>
+            </div>
+
+            <div class="blog-load-more">
+                <button class="btn btn-outline" id="blogLoadMore" style="padding:14px 40px;font-size:1rem;">
+                    <i class="ri-refresh-line"></i> Load More Articles
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="blog-nl-section">
+        <div class="container">
+            <div class="blog-nl-card reveal">
+                <div class="blog-nl-content">
+                    <div class="blog-nl-icon"><i class="ri-newspaper-line"></i></div>
+                    <h2>Never Miss a <em>Story</em></h2>
+                    <p>Get our best travel stories, destination guides and exclusive deals delivered straight to your inbox every week.</p>
+                    <form class="blog-nl-form" id="blogNlForm" novalidate>
+                        <div class="blog-nl-input-wrap">
+                            <i class="ri-mail-line"></i>
+                            <input type="email" id="blogNlEmail" placeholder="Enter your email address" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Subscribe <i class="ri-arrow-right-line"></i></button>
+                    </form>
+                    <p class="blog-nl-note"><i class="ri-shield-check-line"></i> No spam, unsubscribe anytime.</p>
+                </div>
+                <div class="blog-nl-deco">
+                    <img src="images/news letter  image.webp" alt="Travel stories">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-simple-wrap">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="images/stackly logo.webp" alt="Logo">
+                </a>
+                <ul class="footer-simple-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="footer-simple-address">
+                    <span><i class="ri-map-pin-line"></i> Salem, Tamil Nadu, India</span>
+                    <span><i class="ri-phone-line"></i> +91 0123456789</span>
+                    <span><i class="ri-mail-line"></i> hello@stackly.com</span>
+                </div>
+                <div class="footer-socials">
+                    <a href="404.html" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                    <a href="404.html" aria-label="Facebook"><i class="ri-facebook-circle-line"></i></a>
+                    <a href="404.html" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+                    <a href="404.html" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+                    <a href="404.html" aria-label="Pinterest"><i class="ri-pinterest-line"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026. All rights reserved. Made with <i class="ri-heart-fill" style="color:#f43f5e"></i></p>
+                <div class="footer-legal">
+                    <a href="404.html">Privacy Policy</a><a href="404.html">Terms of Service</a><a href="404.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="blog.js"></script>
+</body>
+</html>

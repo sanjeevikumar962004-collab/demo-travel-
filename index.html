@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly | Explore The World</title>
+    <meta name="description" content="Discover breathtaking destinations and unforgettable travel experiences with Stackly. Book your dream vacation today.">
+    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="images/stackly logo.webp" alt="Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="signup.html" class="btn btn-outline">Sign Up</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
+        </nav>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html" class="active">Home</a>
+            <a href="destinations.html">Destinations</a>
+            <a href="tours.html">Tours</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <hr class="menu-divider">
+            <a href="signup.html" class="btn btn-outline" style="text-align:center;justify-content:center;">Sign Up</a>
+            <a href="login.html" class="btn btn-primary" style="text-align:center;justify-content:center;">Login</a>
+        </div>
+    </header>
+
+    <!-- Hero Parallax -->
+    <div class="scrollDist"></div>
+    <main class="parallax-main">
+        <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <mask id="m">
+                <g class="cloud1">
+                    <rect fill="#fff" width="100%" height="801" y="799" />
+                    <image xlink:href="images/cloud1Mask.webp" width="1200" height="800"/>
+                </g>
+            </mask>
+            <image class="sky" xlink:href="images/sky.webp" width="1200" height="590" />
+            <image class="mountBg" xlink:href="images/mountBg.webp" width="1200" height="800"/>
+            <image class="mountMg" xlink:href="images/mountMg.webp" width="1200" height="800"/>
+            <image class="cloud2" xlink:href="images/cloud2.webp" width="1200" height="800"/>
+            <image class="mountFg" xlink:href="images/mountFg.webp" width="1200" height="800"/>
+            <image class="cloud1" xlink:href="images/cloud1.webp" width="1200" height="800"/>
+            <image class="cloud3" xlink:href="images/cloud3.webp" width="1200" height="800"/>
+            <text class="hero-title" fill="#fff" x="600" y="350" text-anchor="middle" font-family="'Montserrat', sans-serif" font-weight="900">EXPLORE</text>
+            <polyline class="arrow" fill="#fff" points="599,400 599,439 590,429 590,432 600,442 610,432 610,429 601,439 601,400" />
+            <g mask="url(#m)">
+                <rect fill="#fff" width="100%" height="100%" />
+                <text class="hero-title" x="600" y="350" fill="#162a43" text-anchor="middle" font-family="'Montserrat', sans-serif" font-weight="900">FURTHER</text>
+            </g>
+            <rect id="arrow-btn" width="100" height="100" opacity="0" x="550" y="370" style="cursor:pointer"/>
+        </svg>
+    </main>
+
+    <!-- ======== PAGE CONTENT ======== -->
+    <div id="page-content">
+
+        <!-- 2. Trusted By -->
+        <section class="trusted-section" id="trusted">
+            <div class="container">
+                <p class="trusted-label">Trusted by world's leading travel brands</p>
+                <div class="trusted-logos">
+                    <div class="logo-item"><i class="ri-flight-takeoff-line"></i><span>Emirates</span></div>
+                    <div class="logo-item"><i class="ri-hotel-line"></i><span>Marriott</span></div>
+                    <div class="logo-item"><i class="ri-ship-line"></i><span>Royal Caribbean</span></div>
+                    <div class="logo-item"><i class="ri-plane-line"></i><span>Qatar Airways</span></div>
+                    <div class="logo-item"><i class="ri-building-line"></i><span>Hilton</span></div>
+                    <div class="logo-item"><i class="ri-award-line"></i><span>Airbnb</span></div>
+                </div>
+                <div class="trusted-badges">
+                    <div class="tbadge">
+                        <div class="tbadge-stars">
+                            <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                        </div>
+                        <p><strong>4.9 / 5</strong> &nbsp;from 50K+ reviews</p>
+                    </div>
+                    <div class="tbadge-divider"></div>
+                    <div class="tbadge">
+                        <i class="ri-award-fill tbadge-icon"></i>
+                        <p><strong>Best Travel Agency</strong> 2024 &amp; 2025</p>
+                    </div>
+                    <div class="tbadge-divider"></div>
+                    <div class="tbadge">
+                        <i class="ri-shield-check-fill tbadge-icon"></i>
+                        <p><strong>100% Safe</strong> &nbsp;Travel Guarantee</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+              <!-- 10. Gallery -->
+        <section class="gallery-section" id="gallery">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Moments</span>
+                    <h2 class="section-title">Travel <em>Gallery</em></h2>
+                    <p class="section-desc">Stories told through stunning imagery from around the world.</p>
+                </div>
+                <div class="gallery-grid">
+                    <a href="404.html" class="gallery-item tall" data-src="images/travel gallery.webp">
+                        <img src="images/travel gallery.webp" alt="Swiss Alps" loading="lazy">
+                        <div class="gallery-hover"><i class="ri-zoom-in-line"></i></div>
+                    </a>
+                    <a href="404.html" class="gallery-item" data-src="images/travel gallery 2.webp">
+                        <img src="images/travel gallery 2.webp" alt="Maldives" loading="lazy">
+                        <div class="gallery-hover"><i class="ri-zoom-in-line"></i></div>
+                    </a>
+                    <a href="404.html" class="gallery-item" data-src="images/travel gallery  3.webp">
+                        <img src="images/travel gallery  3.webp" alt="Santorini" loading="lazy">
+                        <div class="gallery-hover"><i class="ri-zoom-in-line"></i></div>
+                    </a>
+                    <a href="404.html" class="gallery-item wide" data-src="images/travel gallery 4.webp">
+                        <img src="images/travel gallery 4.webp" alt="Safari" loading="lazy">
+                        <div class="gallery-hover"><i class="ri-zoom-in-line"></i></div>
+                    </a>
+                    <a href="404.html" class="gallery-item" data-src="images/travel gallery  5.webp">
+                        <img src="images/travel gallery  5.webp" alt="Bali" loading="lazy">
+                        <div class="gallery-hover"><i class="ri-zoom-in-line"></i></div>
+                    </a>
+                    <a href="404.html" class="gallery-item tall" data-src="images/travel gallery  6.webp">
+                        <img src="images/travel gallery  6.webp" alt="Japan" loading="lazy">
+                        <div class="gallery-hover"><i class="ri-zoom-in-line"></i></div>
+                    </a>
+                    <a href="404.html" class="gallery-item" data-src="images/travel gallery  7.webp">
+                        <img src="images/travel gallery  7.webp" alt="Paris" loading="lazy">
+                        <div class="gallery-hover"><i class="ri-zoom-in-line"></i></div>
+                    </a>
+                    <a href="404.html" class="gallery-item" data-src="images/travel gallery  8.webp">
+                        <img src="images/travel gallery  8.webp" alt="Tokyo" loading="lazy">
+                        <div class="gallery-hover"><i class="ri-zoom-in-line"></i></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- 5. Featured Tour Packages -->
+        <section class="packages-section" id="packages">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Hot Deals</span>
+                    <h2 class="section-title">Featured <em>Tour Packages</em></h2>
+                    <p class="section-desc">Curated packages for every type of traveler. Luxury, adventure, or cultural immersion.</p>
+                </div>
+                <div class="packages-list">
+                    <div class="package-card reveal-card">
+                        <div class="pkg-img-wrap">
+                            <img src="images/Swiss Alps Adventure.webp" alt="Swiss Alps" loading="lazy">
+                            <span class="pkg-badge">Best Seller</span>
+                            <button class="pkg-wishlist"><i class="ri-heart-line"></i></button>
+                        </div>
+                        <div class="pkg-info">
+                            <div class="pkg-tags">
+                                <span class="tag"><i class="ri-sun-line"></i> 8 Days / 7 Nights</span>
+                                <span class="tag"><i class="ri-group-line"></i> Max 12</span>
+                                <span class="tag easy"><i class="ri-bar-chart-line"></i> Easy</span>
+                            </div>
+                            <h3>Swiss Alps Adventure</h3>
+                            <p>Conquer breathtaking peaks, ride iconic cogwheel trains and savour world-class fondue.</p>
+                            <div class="pkg-footer">
+                                <div class="pkg-price"><span class="old-price">$3,200</span><strong>$2,699</strong><span class="per">/person</span></div>
+                                <a href="404.html" class="btn btn-primary magnetic">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-card reveal-card">
+                        <div class="pkg-img-wrap">
+                            <img src="images/African Safari Odyssey.webp" alt="African Safari" loading="lazy">
+                            <span class="pkg-badge premium">Premium</span>
+                            <button class="pkg-wishlist"><i class="ri-heart-line"></i></button>
+                        </div>
+                        <div class="pkg-info">
+                            <div class="pkg-tags">
+                                <span class="tag"><i class="ri-sun-line"></i> 10 Days / 9 Nights</span>
+                                <span class="tag"><i class="ri-group-line"></i> Max 8</span>
+                                <span class="tag moderate"><i class="ri-bar-chart-line"></i> Moderate</span>
+                            </div>
+                            <h3>African Safari Odyssey</h3>
+                            <p>Witness the Big Five in their natural habitat. Luxury tented camps &amp; game drives.</p>
+                            <div class="pkg-footer">
+                                <div class="pkg-price"><span class="old-price">$5,800</span><strong>$4,999</strong><span class="per">/person</span></div>
+                                <a href="404.html" class="btn btn-primary magnetic">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="package-card reveal-card">
+                        <div class="pkg-img-wrap">
+                            <img src="images/Kyoto Cultural Journey.webp" alt="Kyoto Japan" loading="lazy">
+                            <span class="pkg-badge cultural">Cultural</span>
+                            <button class="pkg-wishlist"><i class="ri-heart-line"></i></button>
+                        </div>
+                        <div class="pkg-info">
+                            <div class="pkg-tags">
+                                <span class="tag"><i class="ri-sun-line"></i> 12 Days / 11 Nights</span>
+                                <span class="tag"><i class="ri-group-line"></i> Max 16</span>
+                                <span class="tag easy"><i class="ri-bar-chart-line"></i> Easy</span>
+                            </div>
+                            <h3>Kyoto Cultural Journey</h3>
+                            <p>Explore ancient temples, geisha districts and immerse in centuries of tradition.</p>
+                            <div class="pkg-footer">
+                                <div class="pkg-price"><span class="old-price">$3,900</span><strong>$3,199</strong><span class="per">/person</span></div>
+                                <a href="404.html" class="btn btn-primary magnetic">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Adventure Categories — Bento Grid -->
+        <section class="categories-section" id="categories">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Explore More</span>
+                    <h2 class="section-title">Choose Your <em>Adventure</em></h2>
+                    <p class="section-desc">Every type of adventure awaits. Pick your style and we'll craft the perfect escape.</p>
+                </div>
+                <div class="bento-grid">
+                    <div class="bento-card bento-large" style="--bg:url('images/beaches.webp')">
+                        <div class="bento-overlay"></div>
+                        <div class="bento-content">
+                            <div class="bento-icon"><i class="ri-sun-line"></i></div>
+                            <h3>Beaches</h3><p>240+ destinations</p>
+                            <a href="404.html" class="bento-btn">Explore <i class="ri-arrow-right-up-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="bento-card" style="--bg:url('images/mountains.webp')">
+                        <div class="bento-overlay"></div>
+                        <div class="bento-content">
+                            <div class="bento-icon"><i class="ri-landscape-fill"></i></div>
+                            <h3>Mountains</h3><p>180+ treks</p>
+                            <a href="404.html" class="bento-btn">Explore <i class="ri-arrow-right-up-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="bento-card" style="--bg:url('images/safari.webp')">
+                        <div class="bento-overlay"></div>
+                        <div class="bento-content">
+                            <div class="bento-icon"><i class="ri-footprint-line"></i></div>
+                            <h3>Safari</h3><p>90+ packages</p>
+                            <a href="404.html" class="bento-btn">Explore <i class="ri-arrow-right-up-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="bento-card" style="--bg:url('images/camping.webp')">
+                        <div class="bento-overlay"></div>
+                        <div class="bento-content">
+                            <div class="bento-icon"><i class="ri-fire-line"></i></div>
+                            <h3>Camping</h3><p>120+ sites</p>
+                            <a href="404.html" class="bento-btn">Explore <i class="ri-arrow-right-up-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="bento-card bento-tall" style="--bg:url('images/criuse.webp')">
+                        <div class="bento-overlay"></div>
+                        <div class="bento-content">
+                            <div class="bento-icon"><i class="ri-ship-line"></i></div>
+                            <h3>Cruise</h3><p>60+ routes</p>
+                            <a href="404.html" class="bento-btn">Explore <i class="ri-arrow-right-up-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="bento-card" style="--bg:url('images/wild life.webp')">
+                        <div class="bento-overlay"></div>
+                        <div class="bento-content">
+                            <div class="bento-icon"><i class="ri-bear-smile-line"></i></div>
+                            <h3>Wildlife</h3><p>150+ tours</p>
+                            <a href="404.html" class="bento-btn">Explore <i class="ri-arrow-right-up-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="bento-card" style="--bg:url('images/honey moon.webp')">
+                        <div class="bento-overlay"></div>
+                        <div class="bento-content">
+                            <div class="bento-icon"><i class="ri-heart-2-fill"></i></div>
+                            <h3>Honeymoon</h3><p>80+ getaways</p>
+                            <a href="404.html" class="bento-btn">Explore <i class="ri-arrow-right-up-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="bento-card" style="--bg:url('images/cultural tours.webp')">
+                        <div class="bento-overlay"></div>
+                        <div class="bento-content">
+                            <div class="bento-icon"><i class="ri-ancient-pavilion-line"></i></div>
+                            <h3>Cultural Tours</h3><p>200+ tours</p>
+                            <a href="404.html" class="bento-btn">Explore <i class="ri-arrow-right-up-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+ 
+
+        <!-- 8. Testimonials -->
+        <section class="testimonials-section" id="testimonials">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Real Stories</span>
+                    <h2 class="section-title">What Travelers <em>Say</em></h2>
+                    <p class="section-desc">Thousands of happy explorers trust us for their dream journeys.</p>
+                </div>
+            </div>
+            <div class="testimonials-wrapper">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <div class="testimonial-card">
+                        <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p class="test-text">"Stackly turned our Santorini dreams into reality. Every detail was perfection — the sunsets, the food, the private villa. Already planning our next trip!"</p>
+                        <div class="test-author">
+                            <img src="images/p1.webp" alt="Sarah M" loading="lazy">
+                            <div><h4>Sarah Mitchell</h4><p>🇺🇸 New York, USA &nbsp;·&nbsp; Santorini</p></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p class="test-text">"The African Safari package exceeded every expectation. Our guide was phenomenal — we saw all the Big Five on day two! Pure magic. The camp was absolutely luxurious."</p>
+                        <div class="test-author">
+                            <img src="images/p2.webp" alt="James L" loading="lazy">
+                            <div><h4>James Laurent</h4><p>🇬🇧 London, UK &nbsp;·&nbsp; Serengeti</p></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p class="test-text">"Our Bali honeymoon was absolutely flawless. They arranged everything from airport transfers to private dinners. It was the most romantic trip of our lives!"</p>
+                        <div class="test-author">
+                            <img src="images/p3.webp" alt="Priya K" loading="lazy">
+                            <div><h4>Priya Kapoor</h4><p>🇮🇳 Mumbai, India &nbsp;·&nbsp; Bali</p></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></div>
+                        <p class="test-text">"Switzerland in winter was a dream come true. Skiing, fondue, luxury chalets — everything arranged seamlessly. The booking process was effortless and support was instant."</p>
+                        <div class="test-author">
+                            <img src="images/p1.webp" alt="Carlos R" loading="lazy">
+                            <div><h4>Carlos Reyes</h4><p>🇲🇽 Mexico City &nbsp;·&nbsp; Switzerland</p></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p class="test-text">"The Maldives overwater bungalow experience was priceless. Crystal-clear water, vibrant reefs and sunsets to die for. Stackly delivered beyond what I imagined possible."</p>
+                        <div class="test-author">
+                            <img src="images/p2.webp" alt="Mei L" loading="lazy">
+                            <div><h4>Mei Lin</h4><p>🇸🇬 Singapore &nbsp;·&nbsp; Maldives</p></div>
+                        </div>
+                    </div>
+                    <!-- Duplicates for infinite scroll -->
+                    <div class="testimonial-card">
+                        <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p class="test-text">"Stackly turned our Santorini dreams into reality. Every detail was perfection — the sunsets, the food, the private villa. Already planning our next trip!"</p>
+                        <div class="test-author">
+                            <img src="images/p1.webp" alt="Sarah M" loading="lazy">
+                            <div><h4>Sarah Mitchell</h4><p>🇺🇸 New York, USA &nbsp;·&nbsp; Santorini</p></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p class="test-text">"The African Safari package exceeded every expectation. Our guide was phenomenal — we saw all the Big Five on day two! Pure magic. The camp was absolutely luxurious."</p>
+                        <div class="test-author">
+                            <img src="images/p2.webp" alt="James L" loading="lazy">
+                            <div><h4>James Laurent</h4><p>🇬🇧 London, UK &nbsp;·&nbsp; Serengeti</p></div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="test-stars"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i></div>
+                        <p class="test-text">"Our Bali honeymoon was absolutely flawless. They arranged everything from airport transfers to private dinners. It was the most romantic trip of our lives!"</p>
+                        <div class="test-author">
+                            <img src="images/p3.webp" alt="Priya K" loading="lazy">
+                            <div><h4>Priya Kapoor</h4><p>🇮🇳 Mumbai, India &nbsp;·&nbsp; Bali</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+  
+
+        <!-- 11. Blog -->
+        <section class="blog-section" id="blog">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Travel Guides</span>
+                    <h2 class="section-title">Latest From <em>Our Blog</em></h2>
+                    <p class="section-desc">Expert insights, hidden gems and travel tips from around the globe.</p>
+                </div>
+                <div class="blog-grid">
+                    <div class="blog-card reveal-card">
+                        <div class="blog-img-wrap">
+                            <img src="images/home blog adventure.webp" alt="Amalfi" loading="lazy">
+                            <span class="blog-cat">Adventure</span>
+                        </div>
+                        <div class="blog-body">
+                            <div class="blog-meta"><span><i class="ri-calendar-line"></i> July 10, 2026</span><span><i class="ri-time-line"></i> 5 min read</span></div>
+                            <h3>10 Hidden Gems Along the Amalfi Coast</h3>
+                            <p>Discover secret coves and villages the crowds haven't found yet.</p>
+                            <a href="404.html" class="blog-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="blog-card reveal-card">
+                        <div class="blog-img-wrap">
+                            <img src="images/home blog culture.webp" alt="Tokyo" loading="lazy">
+                            <span class="blog-cat">Culture</span>
+                        </div>
+                        <div class="blog-body">
+                            <div class="blog-meta"><span><i class="ri-calendar-line"></i> July 5, 2026</span><span><i class="ri-time-line"></i> 7 min read</span></div>
+                            <h3>Tokyo: A Complete First-Time Visitor's Guide</h3>
+                            <p>Neon lights, ancient shrines, and incredible food — navigate Tokyo like a local.</p>
+                            <a href="404.html" class="blog-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="blog-card reveal-card">
+                        <div class="blog-img-wrap">
+                            <img src="images/home blog relaxation.webp" alt="Beaches" loading="lazy">
+                            <span class="blog-cat">Relaxation</span>
+                        </div>
+                        <div class="blog-body">
+                            <div class="blog-meta"><span><i class="ri-calendar-line"></i> June 28, 2026</span><span><i class="ri-time-line"></i> 4 min read</span></div>
+                            <h3>Best Beaches in Southeast Asia for 2026</h3>
+                            <p>Ranking the most stunning beaches for your next unforgettable getaway.</p>
+                            <a href="404.html" class="blog-link">Read More <i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <!-- 3. Popular Destinations -->
+        <section class="destinations-section" id="destinations">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-tag">Top Picks</span>
+                    <h2 class="section-title">Popular <em>Destinations</em></h2>
+                    <p class="section-desc">Handpicked destinations for unforgettable experiences. From tropical paradise to mountain majesty.</p>
+                </div>
+                <div class="destinations-grid">
+                    <div class="dest-card reveal-card">
+                        <div class="dest-img-wrap">
+                            <img src="images/Maldives.webp" alt="Maldives" loading="lazy">
+                            <button class="dest-wishlist" aria-label="Wishlist"><i class="ri-heart-line"></i></button>
+                        </div>
+                        <div class="dest-info">
+                            <div class="dest-top">
+                                <div><h3>Maldives</h3><p class="dest-country"><i class="ri-map-pin-2-line"></i> South Asia</p></div>
+                                <div class="dest-rating"><i class="ri-star-fill"></i> 4.9</div>
+                            </div>
+                            <div class="dest-bottom">
+                                <div class="dest-meta"><span><i class="ri-time-line"></i> 7 Days</span><span><i class="ri-user-line"></i> 2–6 pax</span></div>
+                                <div class="dest-price">From <strong>$2,400</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dest-card reveal-card">
+                        <div class="dest-img-wrap">
+                            <img src="images/Santorini.webp" alt="Santorini" loading="lazy">
+                            <button class="dest-wishlist" aria-label="Wishlist"><i class="ri-heart-line"></i></button>
+                        </div>
+                        <div class="dest-info">
+                            <div class="dest-top">
+                                <div><h3>Santorini</h3><p class="dest-country"><i class="ri-map-pin-2-line"></i> Greece</p></div>
+                                <div class="dest-rating"><i class="ri-star-fill"></i> 4.8</div>
+                            </div>
+                            <div class="dest-bottom">
+                                <div class="dest-meta"><span><i class="ri-time-line"></i> 5 Days</span><span><i class="ri-user-line"></i> 2–4 pax</span></div>
+                                <div class="dest-price">From <strong>$1,800</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dest-card reveal-card">
+                        <div class="dest-img-wrap">
+                            <img src="images/Bali.webp" alt="Bali" loading="lazy">
+                            <button class="dest-wishlist" aria-label="Wishlist"><i class="ri-heart-line"></i></button>
+                        </div>
+                        <div class="dest-info">
+                            <div class="dest-top">
+                                <div><h3>Bali</h3><p class="dest-country"><i class="ri-map-pin-2-line"></i> Indonesia</p></div>
+                                <div class="dest-rating"><i class="ri-star-fill"></i> 4.7</div>
+                            </div>
+                            <div class="dest-bottom">
+                                <div class="dest-meta"><span><i class="ri-time-line"></i> 8 Days</span><span><i class="ri-user-line"></i> 2–8 pax</span></div>
+                                <div class="dest-price">From <strong>$1,200</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dest-card reveal-card">
+                        <div class="dest-img-wrap">
+                            <img src="images/Paris.webp" alt="Paris" loading="lazy">
+                            <button class="dest-wishlist" aria-label="Wishlist"><i class="ri-heart-line"></i></button>
+                        </div>
+                        <div class="dest-info">
+                            <div class="dest-top">
+                                <div><h3>Paris</h3><p class="dest-country"><i class="ri-map-pin-2-line"></i> France</p></div>
+                                <div class="dest-rating"><i class="ri-star-fill"></i> 4.9</div>
+                            </div>
+                            <div class="dest-bottom">
+                                <div class="dest-meta"><span><i class="ri-time-line"></i> 6 Days</span><span><i class="ri-user-line"></i> 2–6 pax</span></div>
+                                <div class="dest-price">From <strong>$1,600</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dest-card reveal-card">
+                        <div class="dest-img-wrap">
+                            <img src="images/tokyo.webp" alt="Tokyo" loading="lazy">
+                            <button class="dest-wishlist" aria-label="Wishlist"><i class="ri-heart-line"></i></button>
+                        </div>
+                        <div class="dest-info">
+                            <div class="dest-top">
+                                <div><h3>Tokyo</h3><p class="dest-country"><i class="ri-map-pin-2-line"></i> Japan</p></div>
+                                <div class="dest-rating"><i class="ri-star-fill"></i> 4.8</div>
+                            </div>
+                            <div class="dest-bottom">
+                                <div class="dest-meta"><span><i class="ri-time-line"></i> 10 Days</span><span><i class="ri-user-line"></i> 2–6 pax</span></div>
+                                <div class="dest-price">From <strong>$2,100</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dest-card reveal-card">
+                        <div class="dest-img-wrap">
+                            <img src="images/Amalfi Coast.webp" alt="Amalfi Coast" loading="lazy">
+                            <button class="dest-wishlist" aria-label="Wishlist"><i class="ri-heart-line"></i></button>
+                        </div>
+                        <div class="dest-info">
+                            <div class="dest-top">
+                                <div><h3>Amalfi Coast</h3><p class="dest-country"><i class="ri-map-pin-2-line"></i> Italy</p></div>
+                                <div class="dest-rating"><i class="ri-star-fill"></i> 4.9</div>
+                            </div>
+                            <div class="dest-bottom">
+                                <div class="dest-meta"><span><i class="ri-time-line"></i> 7 Days</span><span><i class="ri-user-line"></i> 2–4 pax</span></div>
+                                <div class="dest-price">From <strong>$2,200</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-cta reveal">
+                    <a href="destinations.html" class="btn btn-primary btn-lg magnetic">View All Destinations <i class="ri-arrow-right-line"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. FAQ -->
+        <section class="faq-section" id="faq">
+            <div class="container faq-inner">
+                <div class="section-header reveal">
+                    <span class="section-tag">Got Questions?</span>
+                    <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item active">
+                        <button class="faq-q"><span>What's included in a Stackly package?</span><i class="ri-add-line faq-icon"></i></button>
+                        <div class="faq-a"><p>All packages include flights (where specified), accommodation, airport transfers, guided tours, select meals and 24/7 support. Specific inclusions are clearly listed on each tour page.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q"><span>How do I customize my travel package?</span><i class="ri-add-line faq-icon"></i></button>
+                        <div class="faq-a"><p>After selecting a destination, you can customize hotels, activities, travel dates, group size and dietary preferences. Our travel consultants can also assist over chat or phone.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q"><span>What is the cancellation policy?</span><i class="ri-add-line faq-icon"></i></button>
+                        <div class="faq-a"><p>We offer free cancellation up to 30 days before departure. Cancellations within 30 days may incur a fee. We recommend purchasing travel insurance for full protection.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q"><span>Is travel insurance included?</span><i class="ri-add-line faq-icon"></i></button>
+                        <div class="faq-a"><p>Basic travel insurance is included in all premium packages. For comprehensive cover including medical emergencies, we offer affordable upgrades at checkout.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q"><span>Can I book a solo trip?</span><i class="ri-add-line faq-icon"></i></button>
+                        <div class="faq-a"><p>Absolutely! We have dedicated solo traveler packages with no single supplements, plus options to join group tours and meet like-minded adventurers from around the world.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      
+
+        <!-- 14. Footer -->
+        <footer class="footer" id="footer">
+            <div class="container">
+                <div class="footer-simple-wrap">
+                    <a href="index.html" class="logo footer-logo">
+                        <img src="images/stackly logo.webp" alt="Logo">
+                    </a>
+                    <ul class="footer-simple-nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="tours.html">Tours</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    <div class="footer-simple-address">
+                        <span><i class="ri-map-pin-line"></i> Salem, Tamil Nadu, India</span>
+                        <span><i class="ri-phone-line"></i> +91 0123456789</span>
+                        <span><i class="ri-mail-line"></i> hello@stackly.com</span>
+                    </div>
+                    <div class="footer-socials">
+                        <a href="404.html" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+                        <a href="404.html" aria-label="Facebook"><i class="ri-facebook-circle-line"></i></a>
+                        <a href="404.html" aria-label="Twitter"><i class="ri-twitter-x-line"></i></a>
+                        <a href="404.html" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
+                        <a href="404.html" aria-label="Pinterest"><i class="ri-pinterest-line"></i></a>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2026. All rights reserved. Made with <i class="ri-heart-fill" style="color:#f43f5e"></i></p>
+                    <div class="footer-legal">
+                        <a href="404.html">Privacy Policy</a>
+                        <a href="404.html">Terms of Service</a>
+                        <a href="404.html">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- /#page-content -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

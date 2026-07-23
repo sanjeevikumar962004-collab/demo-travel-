@@ -96,6 +96,7 @@ body.dashboard-page {
     flex-direction: column;
     min-height: 100vh;
     width: calc(100% - 280px); /* fallback if flex bugs out */
+    min-width: 0; /* prevent child content from causing overflow */
 }
 
 /* HEADER */
@@ -343,6 +344,36 @@ header.dash-header {
 }
 .dt-action:hover { color: var(--primary-dark); }
 
+/* Card Action Groups */
+.card-action-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0 !important;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: var(--transition, 0.3s ease);
+}
+.btn-danger {
+    background: #fef2f2;
+    color: #ef4444;
+    border: 1px solid #fca5a5;
+    cursor: pointer;
+}
+.btn-danger:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+    border-color: #ef4444;
+}
+
 /* Dashboard Panes */
 .dash-pane {
     display: none;
@@ -383,9 +414,309 @@ header.dash-header {
 }
 .dash-grid-split {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 24px;
     margin-bottom: 24px;
+}
+.dash-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.dash-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+/* Overview and Wishlist Widget Styles */
+.dash-spending-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+.countdown-widget {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 0;
+}
+.countdown-chart-wrap {
+    width: 90px;
+    height: 90px;
+    position: relative;
+    flex-shrink: 0;
+}
+.countdown-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+.countdown-info h4 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.countdown-info p {
+    font-size: 0.85rem;
+    color: var(--mid);
+    margin: 0;
+}
+.travel-checklist-widget {
+    margin-bottom: 0;
+}
+.wishlist-summary-stats {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.wishlist-stat-box {
+    background: var(--light);
+    padding: 16px;
+    border-radius: 8px;
+    flex: 1 1 120px;
+    text-align: center;
+}
+.wishlist-stat-box span {
+    font-size: 0.8rem;
+    color: var(--mid);
+    display: block;
+    margin-bottom: 4px;
+}
+.wishlist-stat-box strong {
+    font-size: 1.25rem;
+    color: var(--primary);
+    font-family: var(--font-heading);
+}
+.dash-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* New Visual Widgets */
+.dash-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 24px;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    margin-bottom: 24px;
+}
+
+/* Checklist widget */
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: var(--dark);
+}
+.checklist-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+.checklist-item.done span {
+    text-decoration: line-through;
+    color: var(--mid);
+}
+
+/* Activity Feed */
+.activity-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.activity-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 0.88rem;
+}
+.activity-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+.activity-details {
+    display: flex;
+    flex-direction: column;
+}
+.activity-details span {
+    color: var(--mid);
+    font-size: 0.75rem;
+    margin-top: 2px;
+}
+
+/* Visa Card Widget */
+.payment-card {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1.586;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+.card-header-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-chip {
+    width: 36px;
+    height: 28px;
+    background: #e2e8f0;
+    border-radius: 4px;
+}
+.card-number {
+    font-family: monospace;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    margin: 16px 0;
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.card-holder {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+.card-expiry {
+    font-size: 0.8rem;
+}
+
+/* Progress Bars */
+.progress-container {
+    width: 100%;
+    background: #e2e8f0;
+    border-radius: 100px;
+    height: 8px;
+    margin-top: 6px;
+    overflow: hidden;
+}
+.progress-bar {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 100px;
+}
+
+/* Filter Tags */
+.filter-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+.filter-tab {
+    padding: 8px 16px;
+    border-radius: 100px;
+    background: #fff;
+    border: 1px solid #f1f5f9;
+    color: var(--mid);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+.filter-tab:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+.filter-tab.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+/* Review Form */
+.review-form-box {
+    background: #fff;
+    padding: 24px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+.rating-input {
+    display: flex;
+    gap: 8px;
+    font-size: 1.5rem;
+    color: #cbd5e1;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+.rating-input i.active {
+    color: #f59e0b;
+}
+
+/* Form Styles */
+.form-group-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+    .form-group-row {
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+}
+
+/* Responsive Flex Utilities */
+.dash-flex-row {
+    display: flex;
+    gap: 20px;
+}
+.dash-divider-right {
+    border-right: 1px solid rgba(0,0,0,0.06);
+    padding-right: 20px;
+}
+
+
+/* Wishlist Action Buttons Responsive CSS */
+.wishlist-actions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+@media (max-width: 480px) {
+    .wishlist-actions {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .dash-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .dash-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    .dash-grid-3 { grid-template-columns: 1fr; }
+    .dash-grid-4 { grid-template-columns: 1fr; }
 }
 
 /* MOBILE */
@@ -409,10 +740,22 @@ header.dash-header {
     .dh-user-info { display: none; }
     .dash-stats-grid { grid-template-columns: 1fr; }
     .dash-grid-cards { grid-template-columns: 1fr; }
-    .dash-grid-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
+    .dash-grid-split { grid-template-columns: minmax(0, 1fr); gap: 16px; margin-bottom: 16px; }
     .dh-title { font-size: 1rem; max-width: 160px; }
     .db-info h2 { font-size: 1.4rem; }
     .db-action { padding: 10px 20px; font-size: 0.85rem; }
+    
+    .dash-flex-row {
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+    .dash-divider-right {
+        border-right: none !important;
+        padding-right: 0 !important;
+        border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+        padding-bottom: 16px !important;
+        margin-bottom: 8px !important;
+    }
 }
 
 @media (max-width: 480px) {
@@ -421,4 +764,18 @@ header.dash-header {
     header.dash-header { padding: 14px 12px; }
     .dh-title { font-size: 0.92rem; max-width: 130px; }
     .dash-table th, .dash-table td { padding: 12px 10px; font-size: 0.8rem; }
+}
+
+@media (max-width: 576px) {
+    .dash-section {
+        padding: 16px !important;
+    }
+    .dash-card {
+        padding: 16px !important;
+    }
+    .countdown-widget {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
 }

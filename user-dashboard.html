@@ -4,14 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Dashboard | Stackly</title>
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=7">
     <link rel="stylesheet" href="dashboard.css?v=3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="dashboard-page">
+    <div id="preloader" class="preloader-wrap">
+<script>
+setTimeout(() => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.style.opacity = '0';
+        preloader.style.pointerEvents = 'none';
+        setTimeout(() => {
+            preloader.style.visibility = 'hidden';
+            preloader.style.display = 'none';
+        }, 500);
+    }
+}, 2000);
+</script>
+        <div class="clouds">
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div class="cloud cloud4"></div>
+            <div class="cloud cloud5"></div>
+        </div>
+        <div class="loader">
+            <i class="ri-plane-fill plane-icon"></i>
+        </div>
+        <div class="longfazers">
+            <span></span><span></span><span></span><span></span>
+        </div>
+    </div>
 
     <!-- SIDEBAR -->
     <aside class="dash-sidebar" id="dashSidebar">
@@ -112,6 +141,53 @@
                     </div>
                 </div>
 
+                <!-- Overview Charts & Widgets -->
+                <div class="dash-grid-split" style="margin-bottom:32px;">
+                    <!-- Chart -->
+                    <div class="dash-card dash-spending-card">
+                        <h3 style="font-family:var(--font-heading);font-size:1.1rem;margin-bottom:16px;">Travel Spending (2026)</h3>
+                        <div style="position:relative; width:100%; height:220px;">
+                            <canvas id="userSpendingChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Countdown & Checklist Grid -->
+                    <div style="display:flex;flex-direction:column;gap:24px;">
+                        <!-- Countdown -->
+                        <div class="dash-card countdown-widget">
+                            <div class="countdown-chart-wrap">
+                                <canvas id="userOverviewCountdownChart"></canvas>
+                                <div class="countdown-text-overlay">7d</div>
+                            </div>
+                            <div class="countdown-info">
+                                <h4>Maldives Trip Countdown</h4>
+                                <p>Departing on Oct 15, 2026. Make sure to pack sunscreen!</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Travel Checklist -->
+                        <div class="dash-card travel-checklist-widget">
+                            <h4 style="font-family:var(--font-heading);font-size:1rem;font-weight:700;margin-bottom:12px;"><i class="ri-checkbox-multiple-line" style="color:var(--primary);margin-right:6px;"></i>Pre-trip Checklist</h4>
+                            <div class="checklist-item done">
+                                <input type="checkbox" checked disabled>
+                                <span>Booked hotel and flights</span>
+                            </div>
+                            <div class="checklist-item done">
+                                <input type="checkbox" checked disabled>
+                                <span>Checked passport validity</span>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox">
+                                <span>Obtain travel insurance</span>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox">
+                                <span>Pack bags & confirm transfer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Recent Bookings -->
                 <div class="dash-section">
                     <div class="dash-section-header">
@@ -168,10 +244,64 @@
 
             <!-- MY BOOKINGS SECTION -->
             <div id="section-bookings" class="dash-pane">
-                <div class="dash-section">
-                    <div class="dash-section-header">
-                        <h3>All My Bookings</h3>
+                <!-- Bookings Stats -->
+                <div class="dash-stats-grid">
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(14,165,233,0.1);color:var(--primary);"><i class="ri-calendar-check-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Active Bookings</p>
+                            <h3>2</h3>
+                        </div>
                     </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(16,185,129,0.1);color:#10b981;"><i class="ri-money-dollar-circle-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Total Invested</p>
+                            <h3>$21,000</h3>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(245,158,11,0.1);color:#f59e0b;"><i class="ri-flight-takeoff-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Next Flight</p>
+                            <h3>7 Days</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-grid-split">
+                    <!-- Bookings Preferences Chart -->
+                    <div class="dash-section" style="margin-bottom:0;">
+                        <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:16px;">My Travel Styles</h4>
+                        <div style="position:relative; width:100%; height:200px;">
+                            <canvas id="userBookingsPrefChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Travel Insights -->
+                    <div class="dash-section" style="margin-bottom:0; display:flex; flex-direction:column; justify-content:center;">
+                        <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:12px;">Travel Style Insights</h4>
+                        <p style="font-size:0.9rem;color:var(--mid);line-height:1.6;margin-bottom:12px;">You prefer <strong>Beach & Tropical Retreats</strong> (67% of bookings), followed by adventure tours. Your average trip duration is 10 days.</p>
+                        <div class="checklist-item done">
+                            <i class="ri-award-line" style="color:var(--primary);font-size:1.2rem;margin-right:8px;"></i>
+                            <span>Wanderlust Platinum Tier Member</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-section" style="margin-top:24px;">
+                    <div class="dash-section-header">
+                        <h3>My Travel History</h3>
+                    </div>
+                    
+                    <!-- Filter Tabs -->
+                    <div class="filter-tabs" id="bookingFilterTabs">
+                        <span class="filter-tab active" data-filter="all">All Bookings (3)</span>
+                        <span class="filter-tab" data-filter="confirmed">Upcoming (1)</span>
+                        <span class="filter-tab" data-filter="completed">Past Trips (1)</span>
+                        <span class="filter-tab" data-filter="cancelled">Cancelled (1)</span>
+                    </div>
+
                     <div class="dash-table-wrap">
                         <table class="dash-table">
                             <thead>
@@ -185,7 +315,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr data-status="confirmed">
                                     <td>
                                         <div class="dt-tour">
                                             <img src="images/Maldives Luxury Escape.webp" alt="Maldives">
@@ -201,7 +331,7 @@
                                     <td><span class="dt-status status-confirmed">Confirmed</span></td>
                                     <td><button class="dt-action" onclick="window.location.href='404.html'" style="padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:0.8rem;font-weight:600;border:none;">Manage</button></td>
                                 </tr>
-                                <tr>
+                                <tr data-status="completed">
                                     <td>
                                         <div class="dt-tour">
                                             <img src="images/Japan Cherry Blossom.webp" alt="Japan">
@@ -217,7 +347,7 @@
                                     <td><span class="dt-status status-completed">Completed</span></td>
                                     <td><button class="dt-action" onclick="window.location.href='404.html'" style="padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:0.8rem;font-weight:600;border:none;">Feedback</button></td>
                                 </tr>
-                                <tr>
+                                <tr data-status="cancelled">
                                     <td>
                                         <div class="dt-tour">
                                             <img src="images/Santorini Romance.webp" alt="Santorini">
@@ -241,9 +371,35 @@
 
             <!-- WISHLIST SECTION -->
             <div id="section-wishlist" class="dash-pane">
-                <div class="dash-section">
+                <!-- Wishlist Summary & Chart -->
+                <div class="dash-grid-split">
+                    <div class="dash-section" style="margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between;">
+                        <div>
+                            <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:12px;">Wishlist Summary</h4>
+                            <p style="font-size:0.9rem;color:var(--mid);margin-bottom:16px;">You have <strong>4 items</strong> in your wishlist. The total estimated trip cost is <strong>$14,200</strong>.</p>
+                        </div>
+                        <div class="wishlist-summary-stats">
+                            <div class="wishlist-stat-box">
+                                <span>Average Cost</span>
+                                <strong>$3,550</strong>
+                            </div>
+                            <div class="wishlist-stat-box">
+                                <span>Price Drops</span>
+                                <strong style="color:#10b981;">2 Active</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dash-section" style="margin-bottom:0;">
+                        <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:12px;">Price Comparison ($)</h4>
+                        <div style="position:relative; width:100%; height:150px;">
+                            <canvas id="userWishlistPriceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-section" style="margin-top:24px;">
                     <div class="dash-section-header">
-                        <h3>My Wishlist</h3>
+                        <h3>Saved Destinations</h3>
                     </div>
                     <div class="dash-wishlist-grid dash-grid-cards">
                         <!-- Wishlist Card 1 -->
@@ -252,10 +408,13 @@
                             <button onclick="window.location.href='404.html'" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:#fff;border:none;color:#ef4444;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;"><i class="ri-heart-fill"></i></button>
                             <div style="padding:20px;">
                                 <h4 style="font-family:var(--font-heading);font-size:1.1rem;font-weight:700;margin-bottom:8px;">Bali Spiritual Retreat</h4>
-                                <p style="font-size:0.85rem;color:var(--mid);margin-bottom:16px;"><i class="ri-map-pin-line"></i> Indonesia</p>
-                                <div style="display:flex;justify-content:between;align-items:center;">
+                                <p style="font-size:0.85rem;color:var(--mid);margin-bottom:16px;"><i class="ri-map-pin-line"></i> Indonesia • <span style="color:#10b981;font-weight:600;">10% Off</span></p>
+                                <div style="display:flex;flex-direction:column;gap:16px;">
                                     <span style="font-family:var(--font-heading);font-weight:800;color:var(--primary);">$1,200 <span style="font-weight:400;color:var(--mid);font-size:0.8rem;">/ person</span></span>
-                                    <a href="404.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.85rem;border-radius:8px;text-decoration:none;">Book Now</a>
+                                    <div class="wishlist-actions">
+                                        <button class="btn btn-outline" onclick="window.location.href='404.html'" style="flex:1;padding:8px;font-size:0.85rem;border-radius:8px;">Remove</button>
+                                        <a href="404.html" class="btn btn-primary" style="flex:1;text-align:center;padding:8px;font-size:0.85rem;border-radius:8px;text-decoration:none;">Book Now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -266,9 +425,44 @@
                             <div style="padding:20px;">
                                 <h4 style="font-family:var(--font-heading);font-size:1.1rem;font-weight:700;margin-bottom:8px;">Parisian Romance Holiday</h4>
                                 <p style="font-size:0.85rem;color:var(--mid);margin-bottom:16px;"><i class="ri-map-pin-line"></i> France</p>
-                                <div style="display:flex;justify-content:between;align-items:center;">
+                                <div style="display:flex;flex-direction:column;gap:16px;">
                                     <span style="font-family:var(--font-heading);font-weight:800;color:var(--primary);">$2,500 <span style="font-weight:400;color:var(--mid);font-size:0.8rem;">/ person</span></span>
-                                    <a href="404.html" class="btn btn-primary" style="padding:8px 16px;font-size:0.85rem;border-radius:8px;text-decoration:none;">Book Now</a>
+                                    <div class="wishlist-actions">
+                                        <button class="btn btn-outline" onclick="window.location.href='404.html'" style="flex:1;padding:8px;font-size:0.85rem;border-radius:8px;">Remove</button>
+                                        <a href="404.html" class="btn btn-primary" style="flex:1;text-align:center;padding:8px;font-size:0.85rem;border-radius:8px;text-decoration:none;">Book Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Wishlist Card 3 -->
+                        <div class="dash-wishlist-card" style="background:#fff;border-radius:16px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.02);position:relative;">
+                            <img src="images/Japan Cherry Blossom.webp" alt="Japan" style="width:100%;height:180px;object-fit:cover;">
+                            <button onclick="window.location.href='404.html'" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:#fff;border:none;color:#ef4444;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;"><i class="ri-heart-fill"></i></button>
+                            <div style="padding:20px;">
+                                <h4 style="font-family:var(--font-heading);font-size:1.1rem;font-weight:700;margin-bottom:8px;">Japan Cherry Blossom</h4>
+                                <p style="font-size:0.85rem;color:var(--mid);margin-bottom:16px;"><i class="ri-map-pin-line"></i> Japan • <span style="color:#10b981;font-weight:600;">Price Drop</span></p>
+                                <div style="display:flex;flex-direction:column;gap:16px;">
+                                    <span style="font-family:var(--font-heading);font-weight:800;color:var(--primary);">$3,700 <span style="font-weight:400;color:var(--mid);font-size:0.8rem;">/ person</span></span>
+                                    <div class="wishlist-actions">
+                                        <button class="btn btn-outline" onclick="window.location.href='404.html'" style="flex:1;padding:8px;font-size:0.85rem;border-radius:8px;">Remove</button>
+                                        <a href="404.html" class="btn btn-primary" style="flex:1;text-align:center;padding:8px;font-size:0.85rem;border-radius:8px;text-decoration:none;">Book Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Wishlist Card 4 -->
+                        <div class="dash-wishlist-card" style="background:#fff;border-radius:16px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.02);position:relative;">
+                            <img src="images/Maldives Luxury Escape.webp" alt="Maldives" style="width:100%;height:180px;object-fit:cover;">
+                            <button onclick="window.location.href='404.html'" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;background:#fff;border:none;color:#ef4444;display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;"><i class="ri-heart-fill"></i></button>
+                            <div style="padding:20px;">
+                                <h4 style="font-family:var(--font-heading);font-size:1.1rem;font-weight:700;margin-bottom:8px;">Maldives Luxury Escape</h4>
+                                <p style="font-size:0.85rem;color:var(--mid);margin-bottom:16px;"><i class="ri-map-pin-line"></i> Maldives</p>
+                                <div style="display:flex;flex-direction:column;gap:16px;">
+                                    <span style="font-family:var(--font-heading);font-weight:800;color:var(--primary);">$6,800 <span style="font-weight:400;color:var(--mid);font-size:0.8rem;">/ person</span></span>
+                                    <div class="wishlist-actions">
+                                        <button class="btn btn-outline" onclick="window.location.href='404.html'" style="flex:1;padding:8px;font-size:0.85rem;border-radius:8px;">Remove</button>
+                                        <a href="404.html" class="btn btn-primary" style="flex:1;text-align:center;padding:8px;font-size:0.85rem;border-radius:8px;text-decoration:none;">Book Now</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -278,12 +472,62 @@
 
             <!-- MY REVIEWS SECTION -->
             <div id="section-reviews" class="dash-pane">
-                <div class="dash-section">
+                <div class="dash-grid-split">
+                    <!-- Rating Summary -->
+                    <div class="dash-section dash-flex-row" style="margin-bottom:0;">
+                        <div class="dash-divider-right" style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                            <h1 style="font-size:3.5rem; font-family:var(--font-heading); font-weight:800; color:#f59e0b; margin-bottom:8px;">4.8</h1>
+                            <div style="color:#f59e0b; margin-bottom:8px;">
+                                <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i>
+                            </div>
+                            <span style="font-size:0.85rem; color:var(--mid);">Based on 2 reviews</span>
+                        </div>
+                        <div style="flex:1.5;">
+                            <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:12px;">Ratings Breakdown</h4>
+                            <div style="position:relative; width:100%; height:120px;">
+                                <canvas id="userReviewsRatingsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Write a Review Form -->
+                    <div class="review-form-box" style="margin-bottom:0;">
+                        <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:12px;">Share Your Adventure</h4>
+                        <form id="writeReviewForm">
+                            <div style="margin-bottom:12px;">
+                                <label style="display:block; font-size:0.8rem; font-weight:600; margin-bottom:4px;">Select Booking</label>
+                                <select style="width:100%; padding:8px 12px; border-radius:6px; border:1px solid #cbd5e1; outline:none;" required>
+                                    <option value="">-- Choose a past trip --</option>
+                                    <option value="japan">Japan Cherry Blossom (March 2026)</option>
+                                </select>
+                            </div>
+                            <div style="margin-bottom:12px;">
+                                <label style="display:block; font-size:0.8rem; font-weight:600; margin-bottom:4px;">Rating</label>
+                                <div class="rating-input" id="ratingStarInput">
+                                    <i class="ri-star-line" data-value="1"></i>
+                                    <i class="ri-star-line" data-value="2"></i>
+                                    <i class="ri-star-line" data-value="3"></i>
+                                    <i class="ri-star-line" data-value="4"></i>
+                                    <i class="ri-star-line" data-value="5"></i>
+                                </div>
+                                <input type="hidden" id="reviewRatingVal" name="rating" value="">
+                            </div>
+                            <div style="margin-bottom:12px;">
+                                <label style="display:block; font-size:0.8rem; font-weight:600; margin-bottom:4px;">Comments</label>
+                                <textarea placeholder="Tell us about your experience..." rows="3" style="width:100%; padding:8px 12px; border-radius:6px; border:1px solid #cbd5e1; outline:none; resize:none;" required></textarea>
+                            </div>
+                            <div id="reviewMsg" style="display:none; padding:10px 14px; border-radius:6px; font-size:0.85rem; font-weight:600; margin-bottom:12px; text-align:center;"></div>
+                            <button type="submit" class="btn btn-primary" style="width:100%; padding:10px; font-size:0.85rem; border-radius:6px; border:none; cursor:pointer;">Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="dash-section" style="margin-top:24px;">
                     <div class="dash-section-header">
-                        <h3>My Reviews</h3>
+                        <h3>My Past Reviews</h3>
                     </div>
                     <div style="display:flex;flex-direction:column;gap:20px;">
-                        <div style="padding:20px;border:1px solid #f1f5f9;border-radius:12px;background:#fff;display:flex;gap:20px;align-items:start;">
+                        <div class="dash-flex-row" style="padding:20px;border:1px solid #f1f5f9;border-radius:12px;background:#fff;align-items:start;">
                             <img src="images/Maldives Luxury Escape.webp" alt="Maldives" style="width:80px;height:80px;border-radius:12px;object-fit:cover;">
                             <div style="flex:1;">
                                 <h4 style="font-family:var(--font-heading);font-weight:700;font-size:1rem;margin-bottom:6px;">Maldives Luxury Escape</h4>
@@ -294,7 +538,7 @@
                                 <p style="font-size:0.88rem;color:var(--dark);line-height:1.5;">Absolutely breathtaking! The water villa was magnificent, and the service was beyond words. Highly recommended for couples looking for luxury.</p>
                             </div>
                         </div>
-                        <div style="padding:20px;border:1px solid #f1f5f9;border-radius:12px;background:#fff;display:flex;gap:20px;align-items:start;">
+                        <div class="dash-flex-row" style="padding:20px;border:1px solid #f1f5f9;border-radius:12px;background:#fff;align-items:start;">
                             <img src="images/Japan Cherry Blossom.webp" alt="Japan" style="width:80px;height:80px;border-radius:12px;object-fit:cover;">
                             <div style="flex:1;">
                                 <h4 style="font-family:var(--font-heading);font-weight:700;font-size:1rem;margin-bottom:6px;">Japan Cherry Blossom</h4>
@@ -311,50 +555,94 @@
 
             <!-- SETTINGS SECTION -->
             <div id="section-settings" class="dash-pane">
-                <div class="dash-section">
-                    <div class="dash-section-header">
-                        <h3>Profile Settings</h3>
+                <div class="dash-grid-split">
+                    <!-- Profile Form -->
+                    <div class="dash-section" style="margin-bottom:0;">
+                        <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:16px;">Update Profile</h4>
+                        <form class="auth-form" id="userProfileForm" novalidate style="padding: 0;">
+                            <div class="form-group-row">
+                                <div class="af-field" style="flex:1;">
+                                    <label for="profileName">Full Name *</label>
+                                    <div class="af-input-wrap" style="position:relative;">
+                                        <i class="ri-user-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
+                                        <input type="text" id="profileName" placeholder="John Doe" required minlength="2" pattern="[A-Za-z\s]+" title="Name must be at least 2 characters (letters only)" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                                    </div>
+                                    <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
+                                </div>
+                                <div class="af-field" style="flex:1;">
+                                    <label for="profileMobile">Mobile Number *</label>
+                                    <div class="af-input-wrap" style="position:relative;">
+                                        <i class="ri-phone-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
+                                        <input type="tel" id="profileMobile" placeholder="10-digit mobile number" required maxlength="10" pattern="[0-9]{10}" title="Mobile number must be exactly 10 digits" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                                    </div>
+                                    <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
+                                </div>
+                            </div>
+
+                            <div class="af-field" style="margin-bottom:20px;">
+                                <label for="profileEmail">Email Address *</label>
+                                <div class="af-input-wrap" style="position:relative;">
+                                    <i class="ri-mail-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
+                                    <input type="email" id="profileEmail" placeholder="john@example.com" required title="Please enter a valid email address" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                                </div>
+                                <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
+                            </div>
+
+                            <div class="af-field" style="margin-bottom:20px;">
+                                <label for="profilePwd">New Password *</label>
+                                <div class="af-input-wrap" style="position:relative;">
+                                    <i class="ri-lock-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
+                                    <input type="password" id="profilePwd" placeholder="Enter new password" required minlength="8" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                                </div>
+                                <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
+                            </div>
+
+                            <div id="profileMsg" style="display:none; padding:10px 14px; border-radius:6px; font-size:0.85rem; font-weight:600; margin-bottom:12px; text-align:center;"></div>
+                            <button type="submit" class="btn btn-primary" id="saveProfileBtn" style="padding:12px 28px;font-family:var(--font-heading);font-weight:700;border-radius:8px;border:none;">Save Profile</button>
+                        </form>
                     </div>
-                    <form class="auth-form" id="userProfileForm" novalidate style="max-width: 600px; padding: 0;">
-                        <div class="af-row dash-grid-split">
-                            <div class="af-field">
-                                <label for="profileName">Full Name *</label>
-                                <div class="af-input-wrap" style="position:relative;">
-                                    <i class="ri-user-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
-                                    <input type="text" id="profileName" placeholder="John Doe" required minlength="2" pattern="[A-Za-z\s]+" title="Name must be at least 2 characters (letters only)" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+
+                    <!-- Payment Cards & Preferences -->
+                    <div style="display:flex; flex-direction:column; gap:24px;">
+                        <!-- Payment Cards -->
+                        <div class="dash-section" style="margin-bottom:0;">
+                            <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:16px;">Saved Payment Methods</h4>
+                            <div class="payment-card">
+                                <div class="card-header-logo">
+                                    <div class="card-chip"></div>
+                                    <i class="ri-visa-line" style="font-size:2rem;"></i>
                                 </div>
-                                <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
-                            </div>
-                            <div class="af-field">
-                                <label for="profileMobile">Mobile Number *</label>
-                                <div class="af-input-wrap" style="position:relative;">
-                                    <i class="ri-phone-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
-                                    <input type="tel" id="profileMobile" placeholder="10-digit mobile number" required maxlength="10" pattern="[0-9]{10}" title="Mobile number must be exactly 10 digits" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                                <div class="card-number">•••• •••• •••• 4892</div>
+                                <div class="card-footer">
+                                    <div class="card-holder">
+                                        <span style="font-size:0.6rem; opacity:0.7; display:block;">Card Holder</span>
+                                        <strong>John Doe</strong>
+                                    </div>
+                                    <div class="card-expiry">
+                                        <span style="font-size:0.6rem; opacity:0.7; display:block;">Expires</span>
+                                        <strong>12/28</strong>
+                                    </div>
                                 </div>
-                                <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
                             </div>
                         </div>
 
-                        <div class="af-field" style="margin-bottom:20px;">
-                            <label for="profileEmail">Email Address *</label>
-                            <div class="af-input-wrap" style="position:relative;">
-                                <i class="ri-mail-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
-                                <input type="email" id="profileEmail" placeholder="john@example.com" required title="Please enter a valid email address" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                        <!-- Notification Settings -->
+                        <div class="dash-section" style="margin-bottom:0;">
+                            <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:16px;">Email Notifications</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="notifyBooking" checked>
+                                <label for="notifyBooking" style="cursor:pointer;">Booking confirmation & updates</label>
                             </div>
-                            <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
-                        </div>
-
-                        <div class="af-field" style="margin-bottom:20px;">
-                            <label for="profilePwd">New Password</label>
-                            <div class="af-input-wrap" style="position:relative;">
-                                <i class="ri-lock-line icon" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--mid);"></i>
-                                <input type="password" id="profilePwd" placeholder="Leave blank to keep current" minlength="8" style="width:100%;padding:12px 16px 12px 45px;border:1px solid var(--border-color);border-radius:8px;outline:none;">
+                            <div class="checklist-item">
+                                <input type="checkbox" id="notifyPromo" checked>
+                                <label for="notifyPromo" style="cursor:pointer;">Promotions & discount deals</label>
                             </div>
-                            <span class="af-error-msg" style="color:#ef4444;font-size:0.75rem;margin-top:4px;display:none;"></span>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="notifyNewsletter">
+                                <label for="notifyNewsletter" style="cursor:pointer;">Monthly travel newsletter</label>
+                            </div>
                         </div>
-
-                        <button type="button" onclick="window.location.href='404.html'" class="btn btn-primary" id="saveProfileBtn" style="padding:12px 28px;font-family:var(--font-heading);font-weight:700;border-radius:8px;border:none;">Save Profile</button>
-                    </form>
+                    </div>
                 </div>
             </div>
 
@@ -469,6 +757,7 @@
                 const profileNameInput = document.getElementById('profileName');
                 const profileMobileInput = document.getElementById('profileMobile');
                 const profileEmailInput = document.getElementById('profileEmail');
+                const profilePwdInput = document.getElementById('profilePwd');
 
                 const validateProfileField = (input) => {
                     const wrap = input.closest('.af-input-wrap');
@@ -499,6 +788,11 @@
                             isValid = false;
                             message = 'Please enter a valid email address';
                         }
+                    } else if (input.id === 'profilePwd' && val) {
+                        if (val.length < 8) {
+                            isValid = false;
+                            message = 'Password must be at least 8 characters';
+                        }
                     }
 
                     if (!isValid) {
@@ -517,18 +811,39 @@
                     return isValid;
                 };
 
-                [profileNameInput, profileMobileInput, profileEmailInput].forEach(input => {
+                [profileNameInput, profileMobileInput, profileEmailInput, profilePwdInput].forEach(input => {
                     if (input) {
                         input.addEventListener('blur', () => validateProfileField(input));
                         input.addEventListener('input', () => validateProfileField(input));
                     }
                 });
 
+                const profileMsg = document.getElementById('profileMsg');
+
+                const showProfileMessage = (text, type) => {
+                    if (profileMsg) {
+                        profileMsg.textContent = text;
+                        profileMsg.style.display = 'block';
+                        if (type === 'error') {
+                            profileMsg.style.background = '#fef2f2';
+                            profileMsg.style.color = '#ef4444';
+                            profileMsg.style.border = '1px solid #fca5a5';
+                        } else {
+                            profileMsg.style.background = '#d1fae5';
+                            profileMsg.style.color = '#069669';
+                            profileMsg.style.border = '1px solid #a7f3d0';
+                            setTimeout(() => {
+                                profileMsg.style.display = 'none';
+                            }, 4000);
+                        }
+                    }
+                };
+
                 profileForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     let isFormValid = true;
 
-                    [profileNameInput, profileMobileInput, profileEmailInput].forEach(input => {
+                    [profileNameInput, profileMobileInput, profileEmailInput, profilePwdInput].forEach(input => {
                         if (input && !validateProfileField(input)) isFormValid = false;
                     });
 
@@ -550,17 +865,255 @@
                             // Update user display names and emails site-wide
                             updateDOMProfile(profileNameInput.value.trim(), profileEmailInput.value.trim());
 
+                            showProfileMessage('Profile updated successfully!', 'success');
+
                             setTimeout(() => {
                                 saveBtn.innerHTML = 'Save Profile';
                                 saveBtn.style.background = '';
                             }, 2000);
                         }, 1200);
+                    } else {
+                        showProfileMessage('Please correct the validation errors in red.', 'error');
                     }
+                });
+            }
+
+            // --- Chart.js Initializations ---
+            const ctxUserSpending = document.getElementById('userSpendingChart');
+            if (ctxUserSpending) {
+                new Chart(ctxUserSpending, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Spending ($)',
+                            data: [0, 1200, 0, 450, 0, 3200],
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            }
+
+            // Overview Countdown Chart (Semi-Doughnut)
+            const ctxCountdown = document.getElementById('userOverviewCountdownChart');
+            if (ctxCountdown) {
+                new Chart(ctxCountdown, {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [{
+                            data: [7, 23],
+                            backgroundColor: ['#0ea5e9', '#e2e8f0'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '80%',
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: { enabled: false }
+                        }
+                    }
+                });
+            }
+
+            // Bookings Preferences Chart
+            const ctxPref = document.getElementById('userBookingsPrefChart');
+            if (ctxPref) {
+                new Chart(ctxPref, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Beach & Tropical', 'Adventure', 'Cultural'],
+                        datasets: [{
+                            data: [67, 23, 10],
+                            backgroundColor: ['#0ea5e9', '#10b981', '#f59e0b'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        }
+                    }
+                });
+            }
+
+            // Wishlist Price Chart
+            const ctxWishlist = document.getElementById('userWishlistPriceChart');
+            if (ctxWishlist) {
+                new Chart(ctxWishlist, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Bali', 'Paris', 'Japan', 'Maldives'],
+                        datasets: [{
+                            label: 'Original Price ($)',
+                            data: [1350, 2500, 4100, 6800],
+                            backgroundColor: '#94a3b8',
+                            borderRadius: 4
+                        }, {
+                            label: 'Current Price ($)',
+                            data: [1200, 2500, 3700, 6800],
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { beginAtZero: true }
+                        },
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            }
+
+            // Reviews Ratings Chart (Horizontal Bar)
+            const ctxReviews = document.getElementById('userReviewsRatingsChart');
+            if (ctxReviews) {
+                new Chart(ctxReviews, {
+                    type: 'bar',
+                    data: {
+                        labels: ['5★', '4★', '3★', '2★', '1★'],
+                        datasets: [{
+                            data: [1, 1, 0, 0, 0],
+                            backgroundColor: '#f59e0b',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: { grid: { display: false }, ticks: { precision: 0 } },
+                            y: { grid: { display: false } }
+                        },
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            }
+
+            // Star rating click interaction
+            const stars = document.querySelectorAll('#ratingStarInput i');
+            const ratingVal = document.getElementById('reviewRatingVal');
+            if (stars.length > 0 && ratingVal) {
+                stars.forEach((star, idx) => {
+                    star.addEventListener('click', () => {
+                        const selectedVal = idx + 1;
+                        ratingVal.value = selectedVal;
+                        stars.forEach((s, i) => {
+                            if (i <= idx) {
+                                s.classList.remove('ri-star-line');
+                                s.classList.add('ri-star-fill', 'active');
+                            } else {
+                                s.classList.remove('ri-star-fill', 'active');
+                                s.classList.add('ri-star-line');
+                            }
+                        });
+                    });
+                });
+            }
+
+            // Review Form validation & submission
+            const reviewForm = document.getElementById('writeReviewForm');
+            const reviewMsg = document.getElementById('reviewMsg');
+
+            if (reviewForm && reviewMsg) {
+                reviewForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const bookingSelect = reviewForm.querySelector('select');
+                    const commentText = reviewForm.querySelector('textarea');
+                    
+                    if (!bookingSelect.value) {
+                        showReviewMessage('Please select a past trip.', 'error');
+                        return;
+                    }
+                    if (!ratingVal.value) {
+                        showReviewMessage('Please select a rating (click stars).', 'error');
+                        return;
+                    }
+                    if (!commentText.value.trim()) {
+                        showReviewMessage('Please write your comments.', 'error');
+                        return;
+                    }
+                    
+                    // Success!
+                    showReviewMessage('Thank you for your feedback! It has been submitted for approval.', 'success');
+                    reviewForm.reset();
+                    // Reset stars
+                    stars.forEach(s => {
+                        s.classList.remove('ri-star-fill', 'active');
+                        s.classList.add('ri-star-line');
+                    });
+                    ratingVal.value = '';
+                });
+
+                function showReviewMessage(text, type) {
+                    reviewMsg.textContent = text;
+                    reviewMsg.style.display = 'block';
+                    if (type === 'error') {
+                        reviewMsg.style.background = '#fef2f2';
+                        reviewMsg.style.color = '#ef4444';
+                        reviewMsg.style.border = '1px solid #fca5a5';
+                    } else {
+                        reviewMsg.style.background = '#d1fae5';
+                        reviewMsg.style.color = '#069669';
+                        reviewMsg.style.border = '1px solid #a7f3d0';
+                        // Fade out success message after 4 seconds
+                        setTimeout(() => {
+                            reviewMsg.style.display = 'none';
+                        }, 4000);
+                    }
+                }
+            }
+
+            // My Bookings Filtering Options
+            const bookingFilterTabs = document.querySelectorAll('#bookingFilterTabs .filter-tab');
+            const bookingRows = document.querySelectorAll('.dash-pane#section-bookings .dash-table tbody tr');
+
+            if (bookingFilterTabs.length > 0 && bookingRows.length > 0) {
+                bookingFilterTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        // Remove active class from all tabs
+                        bookingFilterTabs.forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+
+                        const filter = tab.getAttribute('data-filter');
+                        bookingRows.forEach(row => {
+                            const status = row.getAttribute('data-status');
+                            if (filter === 'all' || status === filter) {
+                                row.style.display = '';
+                            } else {
+                                row.style.display = 'none';
+                            }
+                        });
+                    });
                 });
             }
         });
     </script>
 </body>
 </html>
-</body>
-</html>
+
+
+
+
+
+

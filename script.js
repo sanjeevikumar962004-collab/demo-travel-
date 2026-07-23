@@ -363,3 +363,19 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => enforceSiteWideRules(e), 10);
     }, true);
 })();
+
+/* ============================================================
+   PRELOADER
+   ============================================================ */
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.visibility = 'hidden';
+                preloader.style.display = 'none';
+            }, 500); // Wait for transition
+        }
+    }, 2000); // 2 seconds
+});

@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Stackly</title>
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=7">
     <link rel="stylesheet" href="dashboard.css?v=3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* Admin specific tweaks */
         .dash-sidebar { background: var(--dark); border-right: none; }
@@ -23,6 +24,34 @@
     </style>
 </head>
 <body class="dashboard-page">
+    <div id="preloader" class="preloader-wrap">
+<script>
+setTimeout(() => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        preloader.style.opacity = '0';
+        preloader.style.pointerEvents = 'none';
+        setTimeout(() => {
+            preloader.style.visibility = 'hidden';
+            preloader.style.display = 'none';
+        }, 500);
+    }
+}, 2000);
+</script>
+        <div class="clouds">
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div class="cloud cloud4"></div>
+            <div class="cloud cloud5"></div>
+        </div>
+        <div class="loader">
+            <i class="ri-plane-fill plane-icon"></i>
+        </div>
+        <div class="longfazers">
+            <span></span><span></span><span></span><span></span>
+        </div>
+    </div>
 
     <!-- SIDEBAR -->
     <aside class="dash-sidebar" id="dashSidebar">
@@ -121,6 +150,50 @@
                     </div>
                 </div>
 
+                <!-- Overview Charts & Widgets -->
+                <div class="dash-grid-split" style="margin-bottom:32px;">
+                    <div class="dash-section" style="margin-bottom:0;">
+                        <h3 style="font-family:var(--font-heading);font-size:1.1rem;margin-bottom:16px;">Revenue Trend</h3>
+                        <div style="position:relative; width:100%; height:220px;">
+                            <canvas id="overviewRevenueChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div style="display:flex; flex-direction:column; gap:24px;">
+                        <!-- Top Packages List -->
+                        <div class="dash-section" style="margin-bottom:0; padding:20px;">
+                            <h4 style="font-family:var(--font-heading);font-size:1rem;font-weight:700;margin-bottom:12px;">Top Packages Performance</h4>
+                            <div style="margin-bottom:12px;">
+                                <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600;">
+                                    <span>Maldives Luxury Escape</span>
+                                    <span>$84,200 (65%)</span>
+                                </div>
+                                <div class="progress-container"><div class="progress-bar" style="width:65%;"></div></div>
+                            </div>
+                            <div>
+                                <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600;">
+                                    <span>Japan Cherry Blossom</span>
+                                    <span>$35,100 (35%)</span>
+                                </div>
+                                <div class="progress-container"><div class="progress-bar" style="width:35%; background:#10b981;"></div></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Tasks -->
+                        <div class="dash-section" style="margin-bottom:0; padding:20px;">
+                            <h4 style="font-family:var(--font-heading);font-size:1rem;font-weight:700;margin-bottom:12px;">Quick Tasks</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="task1">
+                                <label for="task1" style="cursor:pointer;">Approve Michael Chen's booking</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="task2" checked>
+                                <label for="task2" style="text-decoration:line-through; color:var(--mid); cursor:pointer;">Update Maldives pricing structure</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Recent Bookings -->
                 <div class="dash-section">
                     <div class="dash-section-header">
@@ -176,11 +249,71 @@
 
             <!-- ALL BOOKINGS SECTION -->
             <div id="section-bookings" class="dash-pane">
-                <div class="dash-section">
-                    <div class="dash-section-header">
-                        <h3>All Agency Bookings</h3>
-                        <button class="btn btn-primary" onclick="window.location.href='404.html'" style="padding: 8px 16px; font-size: 0.85rem;"><i class="ri-add-line"></i> Add Booking</button>
+                <!-- Bookings Stats -->
+                <div class="dash-stats-grid">
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(14,165,233,0.1);color:var(--primary);"><i class="ri-book-read-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Total Bookings</p>
+                            <h3>342</h3>
+                        </div>
                     </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(16,185,129,0.1);color:#10b981;"><i class="ri-checkbox-circle-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Confirmed</p>
+                            <h3>290</h3>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(245,158,11,0.1);color:#f59e0b;"><i class="ri-time-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Pending Payment</p>
+                            <h3>42</h3>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(244,63,94,0.1);color:#f43f5e;"><i class="ri-close-circle-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Cancelled</p>
+                            <h3>10</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-grid-split">
+                    <!-- Status Chart -->
+                    <div class="dash-section" style="margin-bottom:0;">
+                        <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:16px;">Booking Status Distribution</h4>
+                        <div style="position:relative; width:100%; height:200px;">
+                            <canvas id="adminBookingsStatusChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions & Search -->
+                    <div class="dash-section" style="margin-bottom:0; display:flex; flex-direction:column; justify-content:center;">
+                        <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:12px;">Booking Operations</h4>
+                        <p style="font-size:0.9rem;color:var(--mid);line-height:1.6;margin-bottom:16px;">All booking processes are live. 85% of bookings are confirmed. Ensure pending payments are processed within 24 hours.</p>
+                        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                            <button class="btn btn-primary" onclick="window.location.href='404.html'" style="flex:1; padding:10px; font-size:0.85rem; border-radius:8px;"><i class="ri-add-line"></i> New Booking</button>
+                            <button class="btn btn-outline" onclick="window.location.href='404.html'" style="flex:1; padding:10px; font-size:0.85rem; border-radius:8px;"><i class="ri-download-line"></i> CSV Export</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-section" style="margin-top:24px;">
+                    <div class="dash-section-header">
+                        <h3>Booking Ledger</h3>
+                    </div>
+                    
+                    <!-- Filter Tabs -->
+                    <div class="filter-tabs" id="adminBookingFilterTabs">
+                        <span class="filter-tab active" data-filter="all">All Bookings (342)</span>
+                        <span class="filter-tab" data-filter="confirmed">Confirmed (290)</span>
+                        <span class="filter-tab" data-filter="pending">Pending (42)</span>
+                        <span class="filter-tab" data-filter="cancelled">Cancelled (10)</span>
+                    </div>
+
                     <div class="dash-table-wrap">
                         <table class="dash-table">
                             <thead>
@@ -194,7 +327,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr data-status="pending">
                                     <td><strong>#WL-9483</strong></td>
                                     <td>
                                         <div style="display:flex;align-items:center;gap:10px;">
@@ -207,7 +340,7 @@
                                     <td><span class="dt-status status-pending">Pending Payment</span></td>
                                     <td><button class="dt-action" onclick="window.location.href='404.html'" style="padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:0.8rem;border:none;">Process</button></td>
                                 </tr>
-                                <tr>
+                                <tr data-status="confirmed">
                                     <td><strong>#WL-9482</strong></td>
                                     <td>
                                         <div style="display:flex;align-items:center;gap:10px;">
@@ -220,7 +353,7 @@
                                     <td><span class="dt-status status-confirmed">Confirmed</span></td>
                                     <td><button class="dt-action" onclick="window.location.href='404.html'" style="padding:6px 12px;background:#f3f4f6;border-radius:6px;font-size:0.8rem;border:none;">Details</button></td>
                                 </tr>
-                                <tr>
+                                <tr data-status="cancelled">
                                     <td><strong>#WL-9481</strong></td>
                                     <td>
                                         <div style="display:flex;align-items:center;gap:10px;">
@@ -241,31 +374,98 @@
 
             <!-- TOUR PACKAGES SECTION -->
             <div id="section-tours" class="dash-pane">
-                <div class="dash-section">
+                <div class="dash-grid-split">
+                    <div class="dash-section" style="margin-bottom:0; display:flex; flex-direction:column; justify-content:space-between;">
+                        <div>
+                            <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:12px;">Tour Inventory Summary</h4>
+                            <p style="font-size:0.9rem;color:var(--mid);margin-bottom:16px;">We currently manage <strong>4 active tour packages</strong>. Total inventory value (fully booked) is <strong>$185,000</strong>.</p>
+                        </div>
+                        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+                            <div style="background:var(--light);padding:16px;border-radius:8px;flex:1;text-align:center;min-width:120px;">
+                                <span style="font-size:0.8rem;color:var(--mid);display:block;margin-bottom:4px;">Average Price</span>
+                                <strong style="font-size:1.25rem;color:var(--primary);font-family:var(--font-heading);">$4,250</strong>
+                            </div>
+                            <div style="background:var(--light);padding:16px;border-radius:8px;flex:1;text-align:center;">
+                                <span style="font-size:0.8rem;color:var(--mid);display:block;margin-bottom:4px;">Active Guides</span>
+                                <strong style="font-size:1.25rem;color:#10b981;font-family:var(--font-heading);">12</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dash-section" style="margin-bottom:0;">
+                        <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:12px;">Tour Booking Frequencies</h4>
+                        <div style="position:relative; width:100%; height:150px;">
+                            <canvas id="adminToursFrequencyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-section" style="margin-top:24px;">
                     <div class="dash-section-header">
                         <h3>Active Tour Packages</h3>
                         <button class="btn btn-primary" onclick="window.location.href='404.html'" style="padding: 8px 16px; font-size: 0.85rem;"><i class="ri-add-line"></i> Add Package</button>
                     </div>
                     <div class="dash-grid-cards">
+                        <!-- Card 1 -->
                         <div style="background:#fff;border-radius:16px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.02);">
                             <img src="images/Maldives Luxury Escape.webp" alt="Maldives" style="width:100%;height:160px;object-fit:cover;">
                             <div style="padding:20px;">
                                 <h4 style="font-family:var(--font-heading);font-weight:700;font-size:1.05rem;margin-bottom:6px;">Maldives Luxury Escape</h4>
                                 <p style="font-size:0.85rem;color:var(--mid);margin-bottom:12px;">8 Days • Active</p>
-                                <div style="display:flex;justify-content:between;align-items:center;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;">
                                     <span style="font-weight:800;color:var(--primary);">$6,800</span>
-                                    <button class="btn btn-outline" onclick="window.location.href='404.html'" style="padding:6px 12px;font-size:0.8rem;border-radius:6px;">Edit Package</button>
+                                    <div class="card-action-group">
+                                        <button class="btn btn-outline btn-icon" onclick="window.location.href='404.html'" title="View Details"><i class="ri-eye-line"></i></button>
+                                        <button class="btn btn-primary btn-icon" onclick="window.location.href='404.html'" title="Edit Package"><i class="ri-edit-line"></i></button>
+                                        <button class="btn btn-danger btn-icon" onclick="window.location.href='404.html'" title="Delete Package"><i class="ri-delete-bin-line"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Card 2 -->
                         <div style="background:#fff;border-radius:16px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.02);">
                             <img src="images/Japan Cherry Blossom.webp" alt="Japan" style="width:100%;height:160px;object-fit:cover;">
                             <div style="padding:20px;">
                                 <h4 style="font-family:var(--font-heading);font-weight:700;font-size:1.05rem;margin-bottom:6px;">Japan Cherry Blossom</h4>
                                 <p style="font-size:0.85rem;color:var(--mid);margin-bottom:12px;">12 Days • Active</p>
-                                <div style="display:flex;justify-content:between;align-items:center;">
+                                <div style="display:flex;justify-content:space-between;align-items:center;">
                                     <span style="font-weight:800;color:var(--primary);">$3,700</span>
-                                    <button class="btn btn-outline" onclick="window.location.href='404.html'" style="padding:6px 12px;font-size:0.8rem;border-radius:6px;">Edit Package</button>
+                                    <div class="card-action-group">
+                                        <button class="btn btn-outline btn-icon" onclick="window.location.href='404.html'" title="View Details"><i class="ri-eye-line"></i></button>
+                                        <button class="btn btn-primary btn-icon" onclick="window.location.href='404.html'" title="Edit Package"><i class="ri-edit-line"></i></button>
+                                        <button class="btn btn-danger btn-icon" onclick="window.location.href='404.html'" title="Delete Package"><i class="ri-delete-bin-line"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div style="background:#fff;border-radius:16px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.02);">
+                            <img src="images/Bali Romance Retreat.webp" alt="Bali" style="width:100%;height:160px;object-fit:cover;">
+                            <div style="padding:20px;">
+                                <h4 style="font-family:var(--font-heading);font-weight:700;font-size:1.05rem;margin-bottom:6px;">Bali Spiritual Retreat</h4>
+                                <p style="font-size:0.85rem;color:var(--mid);margin-bottom:12px;">6 Days • Active</p>
+                                <div style="display:flex;justify-content:space-between;align-items:center;">
+                                    <span style="font-weight:800;color:var(--primary);">$1,200</span>
+                                    <div class="card-action-group">
+                                        <button class="btn btn-outline btn-icon" onclick="window.location.href='404.html'" title="View Details"><i class="ri-eye-line"></i></button>
+                                        <button class="btn btn-primary btn-icon" onclick="window.location.href='404.html'" title="Edit Package"><i class="ri-edit-line"></i></button>
+                                        <button class="btn btn-danger btn-icon" onclick="window.location.href='404.html'" title="Delete Package"><i class="ri-delete-bin-line"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div style="background:#fff;border-radius:16px;border:1px solid #f1f5f9;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.02);">
+                            <img src="images/Santorini Romance.webp" alt="Santorini" style="width:100%;height:160px;object-fit:cover;">
+                            <div style="padding:20px;">
+                                <h4 style="font-family:var(--font-heading);font-weight:700;font-size:1.05rem;margin-bottom:6px;">Santorini Sunset & Villas</h4>
+                                <p style="font-size:0.85rem;color:var(--mid);margin-bottom:12px;">7 Days • Active</p>
+                                <div style="display:flex;justify-content:space-between;align-items:center;">
+                                    <span style="font-weight:800;color:var(--primary);">$4,200</span>
+                                    <div class="card-action-group">
+                                        <button class="btn btn-outline btn-icon" onclick="window.location.href='404.html'" title="View Details"><i class="ri-eye-line"></i></button>
+                                        <button class="btn btn-primary btn-icon" onclick="window.location.href='404.html'" title="Edit Package"><i class="ri-edit-line"></i></button>
+                                        <button class="btn btn-danger btn-icon" onclick="window.location.href='404.html'" title="Delete Package"><i class="ri-delete-bin-line"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +475,51 @@
 
             <!-- CUSTOMERS SECTION -->
             <div id="section-customers" class="dash-pane">
-                <div class="dash-section">
+                <div class="dash-stats-grid">
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(16,185,129,0.1);color:#10b981;"><i class="ri-user-add-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Total Customers</p>
+                            <h3>1,204</h3>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(14,165,233,0.1);color:var(--primary);"><i class="ri-user-star-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Active Today</p>
+                            <h3>148</h3>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dsc-icon" style="background:rgba(245,158,11,0.1);color:#f59e0b;"><i class="ri-user-shared-line"></i></div>
+                        <div class="dsc-info">
+                            <p>Retention Rate</p>
+                            <h3>78%</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-grid-split">
+                    <!-- Referral Sources -->
+                    <div class="dash-section" style="margin-bottom:0;">
+                        <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:16px;">Acquisition Channels</h4>
+                        <div style="position:relative; width:100%; height:200px;">
+                            <canvas id="adminCustomerAcquisitionChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- Customer Operations -->
+                    <div class="dash-section" style="margin-bottom:0; display:flex; flex-direction:column; justify-content:center;">
+                        <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:12px;">Customer Operations</h4>
+                        <p style="font-size:0.9rem;color:var(--mid);line-height:1.6;margin-bottom:16px;">Customer acquisition is up 18% MTD. Most users sign up via social campaigns, followed by organic search.</p>
+                        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                            <button class="btn btn-primary" onclick="window.location.href='404.html'" style="flex:1; padding:10px; font-size:0.85rem; border-radius:8px;"><i class="ri-mail-line"></i> Send Newsletter</button>
+                            <button class="btn btn-outline" onclick="window.location.href='404.html'" style="flex:1; padding:10px; font-size:0.85rem; border-radius:8px;"><i class="ri-settings-line"></i> Manage Tiers</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-section" style="margin-top:24px;">
                     <div class="dash-section-header">
                         <h3>Registered Customers</h3>
                     </div>
@@ -318,6 +562,19 @@
                                     <td><span style="color:#10b981;font-size:0.75rem;font-weight:700;background:#d1fae5;padding:4px 8px;border-radius:100px;">Active</span></td>
                                     <td><button class="dt-action" onclick="window.location.href='404.html'"><i class="ri-mail-send-line"></i></button></td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <div style="display:flex;align-items:center;gap:10px;">
+                                            <img src="images/c3.webp" alt="Customer" style="width:32px;height:32px;border-radius:50%;object-fit:cover;">
+                                            <strong>Emily Davis</strong>
+                                        </div>
+                                    </td>
+                                    <td>emily.d@example.com</td>
+                                    <td>1 Booking</td>
+                                    <td>$4,200</td>
+                                    <td><span style="color:#10b981;font-size:0.75rem;font-weight:700;background:#d1fae5;padding:4px 8px;border-radius:100px;">Active</span></td>
+                                    <td><button class="dt-action" onclick="window.location.href='404.html'"><i class="ri-mail-send-line"></i></button></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -326,41 +583,89 @@
 
             <!-- ANALYTICS SECTION -->
             <div id="section-analytics" class="dash-pane">
-                <div class="dash-section">
+                <div class="dash-section" style="margin-bottom:24px;">
                     <div class="dash-section-header">
                         <h3>Analytics & Performance</h3>
+                        <button class="btn btn-outline" onclick="window.location.href='404.html'" style="padding:8px 16px;font-size:0.85rem;"><i class="ri-download-line"></i> Export Report</button>
                     </div>
-                    <div style="padding:40px;background:#fff;border-radius:16px;border:1px solid #f1f5f9;text-align:center;">
-                        <i class="ri-bar-chart-2-line" style="font-size:3rem;color:var(--primary);margin-bottom:12px;display:block;"></i>
-                        <h4 style="font-family:var(--font-heading);font-size:1.2rem;font-weight:700;margin-bottom:8px;">Booking Analytics Overview</h4>
-                        <p style="font-size:0.9rem;color:var(--mid);max-width:500px;margin:0 auto 20px;">Monthly revenue is up 12.5%. Most popular package this quarter is Maldives Luxury Escape followed by Japan Cherry Blossom.</p>
-                        <button class="btn btn-outline" onclick="window.location.href='404.html'" style="padding:10px 24px;font-size:0.88rem;border-radius:8px;">Export Full Report</button>
+                    <div class="dash-grid-split">
+                        <div style="background:#fff;border-radius:12px;padding:20px;border:1px solid #f1f5f9;">
+                            <h4 style="font-family:var(--font-heading);font-size:1rem;margin-bottom:16px;text-align:center;">Revenue Overview (MTD)</h4>
+                            <div style="position:relative; width:100%; height:250px;">
+                                <canvas id="analyticsRevenueChart"></canvas>
+                            </div>
+                        </div>
+                        <div style="background:#fff;border-radius:12px;padding:20px;border:1px solid #f1f5f9;">
+                            <h4 style="font-family:var(--font-heading);font-size:1rem;margin-bottom:16px;text-align:center;">Bookings by Destination</h4>
+                            <div style="position:relative; width:100%; height:250px;">
+                                <canvas id="analyticsDestinationsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dash-section">
+                    <h4 style="font-family:var(--font-heading);font-size:1.1rem;margin-bottom:16px;">User Growth</h4>
+                    <div style="position:relative; width:100%; height:200px;">
+                        <canvas id="analyticsUsersChart"></canvas>
                     </div>
                 </div>
             </div>
 
             <!-- SETTINGS SECTION -->
             <div id="section-settings" class="dash-pane">
-                <div class="dash-section">
-                    <div class="dash-section-header">
-                        <h3>Agency Settings</h3>
+                <form id="adminSettingsForm" style="padding:0; border:none; background:none;">
+                    <div class="dash-grid-split">
+                        <!-- Form Content -->
+                        <div class="dash-section" style="margin-bottom:0;">
+                            <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:16px;">Agency Info</h4>
+                            <div style="margin-bottom:20px;">
+                                <label style="display:block;margin-bottom:6px;font-weight:600;">Agency Name *</label>
+                                <input type="text" id="adminAgencyName" placeholder="Stackly Travel Group" required minlength="2" style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;outline:none;">
+                            </div>
+                            <div style="margin-bottom:20px;">
+                                <label style="display:block;margin-bottom:6px;font-weight:600;">Admin Full Name *</label>
+                                <input type="text" id="adminName" placeholder="Sarah Jenkins" required minlength="2" pattern="[A-Za-z\s]+" title="Name must contain letters only" style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;outline:none;">
+                            </div>
+                            <div style="margin-bottom:20px;">
+                                <label style="display:block;margin-bottom:6px;font-weight:600;">Contact Email *</label>
+                                <input type="email" id="adminEmail" placeholder="admin@stackly.com" required style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;outline:none;">
+                            </div>
+                        </div>
+
+                        <div style="display:flex; flex-direction:column; gap:24px;">
+                            <!-- Security -->
+                            <div class="dash-section" style="margin-bottom:0;">
+                                <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:16px;">Security & Password</h4>
+                                <div style="margin-bottom:16px;">
+                                    <label style="display:block;margin-bottom:6px;font-weight:600;">Current Password</label>
+                                    <input type="password" id="adminCurrentPassword" placeholder="••••••••" style="width:100%;padding:10px 14px;border:1px solid #cbd5e1;border-radius:8px;outline:none;">
+                                </div>
+                                <div style="margin-bottom:16px;">
+                                    <label style="display:block;margin-bottom:6px;font-weight:600;">New Password *</label>
+                                    <input type="password" id="adminNewPassword" placeholder="Min. 8 characters" required minlength="8" style="width:100%;padding:10px 14px;border:1px solid #cbd5e1;border-radius:8px;outline:none;">
+                                </div>
+                            </div>
+
+                            <!-- System Status -->
+                            <div class="dash-section" style="margin-bottom:0;">
+                                <h4 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:700;margin-bottom:16px;">System Control</h4>
+                                <div class="checklist-item done">
+                                    <i class="ri-checkbox-circle-line" style="color:#10b981; font-size:1.2rem; margin-right:8px;"></i>
+                                    <span>API Status: Operational</span>
+                                </div>
+                                <div class="checklist-item done">
+                                    <i class="ri-checkbox-circle-line" style="color:#10b981; font-size:1.2rem; margin-right:8px;"></i>
+                                    <span>Db Backups: Auto-scheduled</span>
+                                </div>
+                                <button type="button" class="btn btn-outline" style="width:100%; padding:10px; font-size:0.85rem; border-radius:8px; margin-top:8px;" onclick="alert('Manual backup successfully triggered.');">Trigger Manual Backup</button>
+                            </div>
+                        </div>
                     </div>
-                    <form id="adminSettingsForm" style="max-width:500px;background:#fff;padding:24px;border-radius:16px;border:1px solid #f1f5f9;">
-                        <div style="margin-bottom:20px;">
-                            <label style="display:block;margin-bottom:6px;font-weight:600;">Agency Name *</label>
-                            <input type="text" id="adminAgencyName" placeholder="Stackly Travel Group" required minlength="2" style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;">
-                        </div>
-                        <div style="margin-bottom:20px;">
-                            <label style="display:block;margin-bottom:6px;font-weight:600;">Admin Full Name *</label>
-                            <input type="text" id="adminName" placeholder="Sarah Jenkins" required minlength="2" pattern="[A-Za-z\s]+" title="Name must contain letters only" style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;">
-                        </div>
-                        <div style="margin-bottom:20px;">
-                            <label style="display:block;margin-bottom:6px;font-weight:600;">Contact Email *</label>
-                            <input type="email" id="adminEmail" placeholder="admin@stackly.com" required style="width:100%;padding:12px 16px;border:1px solid #cbd5e1;border-radius:8px;">
-                        </div>
-                        <button type="button" onclick="window.location.href='404.html'" class="btn btn-primary" id="saveAdminBtn" style="padding:12px 28px;font-family:var(--font-heading);font-weight:700;border:none;border-radius:8px;">Save Settings</button>
-                    </form>
-                </div>
+                    <div class="dash-section" style="margin-top:24px; display:flex; flex-direction:column; align-items:flex-end;">
+                        <div id="adminProfileMsg" style="display:none; width:100%; max-width:400px; padding:10px 14px; border-radius:6px; font-size:0.85rem; font-weight:600; margin-bottom:12px; text-align:center;"></div>
+                        <button type="submit" class="btn btn-primary" id="saveAdminBtn" style="padding:12px 28px;font-family:var(--font-heading);font-weight:700;border:none;border-radius:8px;">Save Settings</button>
+                    </div>
+                </form>
             </div>
 
         </div>
@@ -460,12 +765,56 @@
                 if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
             }
 
+            // Booking Status Filter Logic
+            const adminBookingFilterTabs = document.querySelectorAll('#adminBookingFilterTabs .filter-tab');
+            const adminBookingRows = document.querySelectorAll('.dash-pane#section-bookings .dash-table tbody tr');
+
+            if (adminBookingFilterTabs.length > 0 && adminBookingRows.length > 0) {
+                adminBookingFilterTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        // Remove active class from all tabs
+                        adminBookingFilterTabs.forEach(t => t.classList.remove('active'));
+                        tab.classList.add('active');
+
+                        const filter = tab.getAttribute('data-filter');
+                        adminBookingRows.forEach(row => {
+                            const status = row.getAttribute('data-status');
+                            if (filter === 'all' || status === filter) {
+                                row.style.display = '';
+                            } else {
+                                row.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
+
             // Settings Validation
             const adminForm = document.getElementById('adminSettingsForm');
             if (adminForm) {
                 const agencyNameInput = document.getElementById('adminAgencyName');
                 const adminNameInput = document.getElementById('adminName');
                 const adminEmailInput = document.getElementById('adminEmail');
+                const adminCurrentPassword = document.getElementById('adminCurrentPassword');
+                const adminNewPassword = document.getElementById('adminNewPassword');
+                const adminProfileMsg = document.getElementById('adminProfileMsg');
+
+                function showAdminProfileMessage(text, type) {
+                    adminProfileMsg.textContent = text;
+                    adminProfileMsg.style.display = 'block';
+                    if (type === 'error') {
+                        adminProfileMsg.style.background = '#fef2f2';
+                        adminProfileMsg.style.color = '#ef4444';
+                        adminProfileMsg.style.border = '1px solid #fca5a5';
+                    } else {
+                        adminProfileMsg.style.background = '#d1fae5';
+                        adminProfileMsg.style.color = '#069669';
+                        adminProfileMsg.style.border = '1px solid #a7f3d0';
+                        setTimeout(() => {
+                            adminProfileMsg.style.display = 'none';
+                        }, 4000);
+                    }
+                }
 
                 const validateAdminField = (input) => {
                     let isValid = true;
@@ -479,13 +828,15 @@
                     } else if (input.type === 'email' && val) {
                         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                         isValid = emailRegex.test(val);
+                    } else if (input.id === 'adminNewPassword' && val) {
+                        isValid = val.length >= 8;
                     }
 
                     input.style.borderColor = isValid ? '#10b981' : '#ef4444';
                     return isValid;
                 };
 
-                [agencyNameInput, adminNameInput, adminEmailInput].forEach(input => {
+                [agencyNameInput, adminNameInput, adminEmailInput, adminNewPassword].forEach(input => {
                     input.addEventListener('blur', () => validateAdminField(input));
                     input.addEventListener('input', () => validateAdminField(input));
                 });
@@ -494,9 +845,18 @@
                     e.preventDefault();
                     let isFormValid = true;
 
-                    [agencyNameInput, adminNameInput, adminEmailInput].forEach(input => {
+                    [agencyNameInput, adminNameInput, adminEmailInput, adminNewPassword].forEach(input => {
                         if (!validateAdminField(input)) isFormValid = false;
                     });
+
+                    const newVal = adminNewPassword.value.trim();
+                    const curVal = adminCurrentPassword.value.trim();
+
+                    if (newVal && !curVal) {
+                        showAdminProfileMessage('Please enter your current password to change to a new one.', 'error');
+                        adminCurrentPassword.style.borderColor = '#ef4444';
+                        return;
+                    }
 
                     if (isFormValid) {
                         const saveBtn = document.getElementById('saveAdminBtn');
@@ -507,6 +867,8 @@
                             saveBtn.innerHTML = '<i class="ri-check-line"></i> Saved!';
                             saveBtn.style.background = '#10b981';
                             saveBtn.disabled = false;
+                            
+                            showAdminProfileMessage('Profile settings saved successfully!', 'success');
 
                             // Save updated values to localStorage
                             localStorage.setItem('loggedInName', adminNameInput.value.trim());
@@ -524,9 +886,155 @@
                     }
                 });
             }
+
+            // --- Chart.js Initializations ---
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            };
+
+            // 1. Overview Revenue Chart
+            const ctxOverview = document.getElementById('overviewRevenueChart');
+            if (ctxOverview) {
+                new Chart(ctxOverview, {
+                    type: 'line',
+                    data: {
+                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        datasets: [{
+                            label: 'Revenue ($)',
+                            data: [1200, 1900, 1500, 2200, 1800, 2800, 3100],
+                            borderColor: '#0ea5e9',
+                            backgroundColor: 'rgba(14, 165, 233, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
+
+            // 2. Analytics Revenue Chart (Bar)
+            const ctxAnalyticsRev = document.getElementById('analyticsRevenueChart');
+            if (ctxAnalyticsRev) {
+                new Chart(ctxAnalyticsRev, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                        datasets: [{
+                            label: 'Revenue ($)',
+                            data: [12500, 18200, 15400, 22400],
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: 6
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
+
+            // 3. Analytics Destinations Chart (Doughnut)
+            const ctxAnalyticsDest = document.getElementById('analyticsDestinationsChart');
+            if (ctxAnalyticsDest) {
+                new Chart(ctxAnalyticsDest, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Maldives', 'Japan', 'Bali', 'Santorini', 'Others'],
+                        datasets: [{
+                            data: [35, 25, 20, 15, 5],
+                            backgroundColor: ['#0ea5e9', '#10b981', '#f59e0b', '#f43f5e', '#64748b'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
+
+            // 4. Analytics Users Chart (Line)
+            const ctxAnalyticsUsers = document.getElementById('analyticsUsersChart');
+            if (ctxAnalyticsUsers) {
+                new Chart(ctxAnalyticsUsers, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'New Customers',
+                            data: [150, 200, 180, 250, 310, 420],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
+
+            // 5. Admin Bookings Status Chart (Pie)
+            const ctxStatus = document.getElementById('adminBookingsStatusChart');
+            if (ctxStatus) {
+                new Chart(ctxStatus, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Confirmed', 'Pending Payment', 'Cancelled'],
+                        datasets: [{
+                            data: [290, 42, 10],
+                            backgroundColor: ['#10b981', '#f59e0b', '#f43f5e'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
+
+            // 6. Admin Tours Frequency Chart (Horizontal Bar)
+            const ctxFreq = document.getElementById('adminToursFrequencyChart');
+            if (ctxFreq) {
+                new Chart(ctxFreq, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Maldives', 'Japan', 'Bali', 'Santorini'],
+                        datasets: [{
+                            data: [120, 95, 70, 45],
+                            backgroundColor: '#0ea5e9',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            }
+
+            // 7. Admin Customer Acquisition Chart (Doughnut)
+            const ctxAcq = document.getElementById('adminCustomerAcquisitionChart');
+            if (ctxAcq) {
+                new Chart(ctxAcq, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Social', 'Organic', 'Referrals'],
+                        datasets: [{
+                            data: [55, 25, 20],
+                            backgroundColor: ['#0ea5e9', '#10b981', '#f59e0b'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
         });
     </script>
 </body>
 </html>
-</body>
-</html>
+
+
+
+
+
+

@@ -99,9 +99,15 @@ header {
     z-index: 1000;
     transition: var(--transition);
 }
-header.scrolled { top: 12px; width: 96%; }
-
-.navbar {
+header.scrolled { top: 0; width: 100%; max-width: 100%; }
+header.scrolled .navbar { 
+    border-radius: 0; 
+    border-top: none; 
+    border-left: none; 
+    border-right: none; 
+    padding-left: max(5%, calc(50vw - 600px)); 
+    padding-right: max(5%, calc(50vw - 600px)); 
+}.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
